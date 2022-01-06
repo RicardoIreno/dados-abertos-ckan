@@ -7,7 +7,7 @@ import Default from '../components/templates/Default'
 
 
 
-const Home = () => {
+export default function Home() {
   return (
     <>
       <Head>
@@ -28,13 +28,6 @@ const Home = () => {
   )
 }
 
-// Home.getInitialProps = async () => {
-  
-//   const datta = listDatasets()
-  
-//   return datta
-// }
 
-export default Home
 
 

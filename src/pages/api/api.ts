@@ -1,7 +1,7 @@
 
 import axios from "axios"
 import { baseURL } from "../../configs/configs"
-import { DatasetListResponse } from '../../types/Types' 
+import { DatasetListResponse, DatasetInfoResponse, DatasetInfoResult } from '../../types/types' 
 
 // const Api = axios.create({baseURL})
 
@@ -13,23 +13,31 @@ export function listDatasets() {
 
 
 
-// export function getDatasets() {
-//   let resp: string[]  
+export function getDataset(id: string) {
+  return axios
+    .get<DatasetInfoResponse>( `${baseURL}api/3/action/package_show?id=${id}` )
+    .then(({ data }) => data.result);
+}
+
+
+
+export async function getAllDatasets() {
+  const listDatasetsResponse = listDatasets()
+  const datasetsIDs = (await listDatasetsResponse) 
+
+  let datasetsListInfo: DatasetInfoResult[]
+
+  datasetsIDs.map( async id => { 
+    let resp = getDataset(id)
+
+    let getDatasetResponse = (await resp)
+    datasetsListInfo.push(getDatasetResponse)
   
-//   listDatasets()
-//   .then( value => resp = value )
+  });
 
-//   console.log(resp)
+  return datasetsListInfo
 
-//   // return resp
-// }
-
-
-// export function showDataset(id: string) {
-//   return axios
-//     .get<DatasetPrevInfo>( `${baseURL}api/3/action/package_show?id=${id}` )
-//     .then(({ data }) => data);
-// }
+}
 
 // export async function makeCards() {
 //   const datasets = await listDatasets()

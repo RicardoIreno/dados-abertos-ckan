@@ -4,7 +4,6 @@ import {Wrapper, GridWrapper} from '../components/atoms'
 import {DatasetCard} from '../components/molecules'
 import Default from '../components/templates/Default'
 import styled from 'styled-components'
-import {DatasetListResponse, DatasetPrevInfo} from '../types/Types' 
 import { listDatasets } from './api/api'
 
 
@@ -14,17 +13,13 @@ const MyWrapper = styled(Wrapper)`
   align-items: center;
 `
 
-// type Props = {
-//   datasets: DatasetListResponse
-//  }
 
 
 type Props = {
   datasets: string[]
  } 
 
-
-const Datasets = (p: Props)  => {
+export default function Datasets(p: Props) {
 	return (
 
 		<Default>
@@ -47,14 +42,13 @@ const Datasets = (p: Props)  => {
 
 export const getServerSideProps = async () => {
   const response = listDatasets()
-  const resp = (await response)
 
   return {
     props: {
-      datasets: resp
+      datasets: (await response)
     }
   }
 
 }
 
-export default Datasets
+

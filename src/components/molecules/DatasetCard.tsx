@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import {theme} from '../../configs'
 import Wrapper from '../atoms/Wrapper'
-import {DatasetPrevInfo} from '../../types/Types'
 
 const MyWrapper = styled(Wrapper)`
   width: 240px;
@@ -22,7 +21,6 @@ const Title = styled.span`
 
 type Props = {
   children?: ReactNode
-  // p: DatasetPrevInfo
   name: string
 
 }
