@@ -2,6 +2,8 @@
 import axios from "axios"
 import { baseURL } from "../../configs/configs"
 import { DatasetListResponse, DatasetInfoResponse, DatasetInfoResult } from '../../types/types' 
+import { useState } from "react"
+
 
 // const Api = axios.create({baseURL})
 
@@ -11,32 +13,24 @@ export function listDatasets() {
     .then(({ data }) => data.result )
 }
 
+// na definição de getDataset, coloca export function getDataset(id: string): DatasetInfoResult {
 
-
-export function getDataset(id: string) {
+export function getDataset(id: string): Promise<DatasetInfoResult> {
   return axios
     .get<DatasetInfoResponse>( `${baseURL}api/3/action/package_show?id=${id}` )
     .then(({ data }) => data.result);
 }
 
 
-
 export async function getAllDatasets() {
-  const listDatasetsResponse = listDatasets()
-  const datasetsIDs = (await listDatasetsResponse) 
+  let allDatasets : DatasetInfoResult[] = []
+  const datasetsIDs = (await listDatasets()) 
 
-  let datasetsListInfo: DatasetInfoResult[]
-
-  datasetsIDs.map( async id => { 
-    let resp = getDataset(id)
-
-    let getDatasetResponse = (await resp)
-    datasetsListInfo.push(getDatasetResponse)
-  
-  });
-
-  return datasetsListInfo
-
+  for (let i = 0; i < datasetsIDs.length; i++ ) {  
+    const resp = ( await getDataset( datasetsIDs[i]) )
+    allDatasets.push(resp)
+  }
+  return allDatasets
 }
 
 // export async function makeCards() {

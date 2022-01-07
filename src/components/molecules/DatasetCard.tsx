@@ -1,10 +1,11 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import {theme} from '../../configs'
-import Wrapper from '../atoms/Wrapper'
+import {Wrapper, TagComponent} from '../atoms'
+import { Tag, Resource } from '../../types/types'
 
 const MyWrapper = styled(Wrapper)`
-  width: 240px;
+  max-width: 800px;
   height: 150px;
   margin: 1rem;
   align-items: center;
@@ -22,22 +23,39 @@ const Title = styled.span`
 type Props = {
   children?: ReactNode
   name: string
+  title: string
+  tags?: Tag[]
+  resources?: Resource[]
 
 }
 
-const DatasetCard = ({children, name}: Props) => {
+
+//  export const getServerSideProps = async () => {
+
+//   return {
+//     props: {
+//       allDatasets: (await getAllDatasets())
+//     }
+//   }
+
+// }
+
+
+const DatasetCard = (p: Props) => {
   return(
     <MyWrapper>
-      <Title>{name}</Title>
+      <Title>{p.title}</Title>
+
+      <p>{p.resources.map( r => r.description)}</p>
 
       {/* <span>Dados: {p.metadata_created}</span>
       <span>Dados criados em: {p.metadata_created}</span>
       <span>Dados modificados em: {p.metadata_created}</span>
 
-      <span>Organização: {p.oganizationTitle}</span>
+      <span>Organização: {p.oganizationTitle}</span> */}
+   
 
-      <span>Tags: {p.tags.map( t => <span key={t}>{t}</span>)}</span>
- */}
+      <span>{p.tags.map( t => <TagComponent> {t.display_name} </TagComponent>)}</span>
 
         {/* {children} */}
 

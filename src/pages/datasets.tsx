@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
-
 import {Wrapper, GridWrapper} from '../components/atoms'
 import {DatasetCard} from '../components/molecules'
 import Default from '../components/templates/Default'
 import styled from 'styled-components'
-import { listDatasets } from './api/api'
+import { getAllDatasets } from './api/api'
+import { DatasetInfoResult } from '../types/types'
 
 
 const MyWrapper = styled(Wrapper)`
@@ -16,8 +15,20 @@ const MyWrapper = styled(Wrapper)`
 
 
 type Props = {
-  datasets: string[]
+  allDatasets: DatasetInfoResult[]
  } 
+
+
+ export const getServerSideProps = async () => {
+
+  return {
+    props: {
+      allDatasets: (await getAllDatasets())
+    }
+  }
+
+}
+
 
 export default function Datasets(p: Props) {
 	return (
@@ -25,13 +36,15 @@ export default function Datasets(p: Props) {
 		<Default>
 
 			<MyWrapper>
-
-      <GridWrapper>  
         
-        {p.datasets.map( d => <DatasetCard key={d} name={d} /> )}
-
-
-      </GridWrapper>
+        {p.allDatasets.map( d => 
+          <DatasetCard 
+            key={d.name} 
+            name={d.title} 
+            title={d.title}
+            tags={d.tags}
+            resources={d.resources}
+          /> )}
 
 			</MyWrapper>
 
@@ -40,15 +53,5 @@ export default function Datasets(p: Props) {
 }
 
 
-export const getServerSideProps = async () => {
-  const response = listDatasets()
-
-  return {
-    props: {
-      datasets: (await response)
-    }
-  }
-
-}
 
 
