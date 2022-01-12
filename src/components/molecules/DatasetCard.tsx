@@ -55,7 +55,7 @@ const DatasetCard = (p: Props) => {
       <span>Organização: {p.oganizationTitle}</span> */}
    
 
-      <span>{p.tags.map( t => <TagComponent> {t.display_name} </TagComponent>)}</span>
+      <span>{p.tags.map( t => <TagComponent key={t.id}> {t.display_name} </TagComponent>)}</span>
 
         {/* {children} */}
 

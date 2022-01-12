@@ -2,7 +2,7 @@ import {Wrapper, GridWrapper} from '../components/atoms'
 import {DatasetCard} from '../components/molecules'
 import Default from '../components/templates/Default'
 import styled from 'styled-components'
-import { getAllDatasets } from './api/api'
+import { getAllDatasets } from '../libs/dataset'
 import { DatasetInfoResult } from '../types/types'
 
 
@@ -38,8 +38,7 @@ export default function Datasets(p: Props) {
 			<MyWrapper>
         
         {p.allDatasets.map( d => 
-          <DatasetCard 
-            key={d.name} 
+          <DatasetCard key={d.name} 
             name={d.title} 
             title={d.title}
             tags={d.tags}
