@@ -1,8 +1,8 @@
-import {Wrapper, GridWrapper} from '../components/atoms'
+import {Wrapper} from '../components/atoms'
 import {DatasetCard} from '../components/molecules'
 import Default from '../components/templates/Default'
 import styled from 'styled-components'
-import { getAllDatasets } from '../libs/dataset'
+import { getAllDatasets } from '../libs/datasetLib'
 import { DatasetInfoResult } from '../types/types'
 
 
@@ -24,6 +24,7 @@ type Props = {
   return {
     props: {
       allDatasets: (await getAllDatasets())
+      // revalidade: 60 * 60 * 24 // 24 hrs
     }
   }
 

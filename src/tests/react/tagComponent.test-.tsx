@@ -1,6 +1,5 @@
-
 import { render } from '@testing-library/react'
-import { TagComponent } from '../components/atoms'
+import { TagComponent } from '../../components/atoms'
 
 // jest.mock('next/router', () => {
 //   return {

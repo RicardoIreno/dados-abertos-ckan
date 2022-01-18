@@ -1,6 +1,7 @@
 
 // export const baseURL = 'http://localhost:5000/'
-export const baseURL = 'http://200.144.93.54/api/3/action/'
+export const baseURL = 'http://dadosabertos.unifesp.br/api/3/action/'
+
 
 const configs = {
   site: {

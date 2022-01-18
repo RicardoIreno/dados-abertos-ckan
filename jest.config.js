@@ -17,7 +17,19 @@ const customJestConfig  = {
   transform: {
     '^.\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }]
   },
-  testEnvironment: 'jest-environment-jsdom',
+  projects: [
+    {
+      displayName: 'Node Tests',
+      testEnvironment: 'node',
+      testMatch: ['<rootDir>/src/tests/node/*.test.ts']
+    },
+    {
+      displayName: 'React Tests',
+      testEnvironment: 'jsdom',
+      testMatch: ['<rootDir>/src/tests/react/*.test.tsx']
+    },
+  ]
+  // testEnvironment: 'jest-environment-jsdom', // jest-environment-jsdom
 }
 
 module.exports = createJestConfig(customJestConfig)
