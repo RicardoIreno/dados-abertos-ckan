@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 
 const MyWrapper = styled(Wrapper)`
-  justify-content: center;
+	min-height: 100vh;
   align-items: center;
   font-size: 1.2rem;
   padding: 2rem;

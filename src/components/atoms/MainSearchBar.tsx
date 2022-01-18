@@ -10,7 +10,7 @@ const MyWrapper = styled(Wrapper)`
 
 const Input = styled.input`
     width: 100%;
-    height: 4rem;
+    height: 3rem;
     margin-top: 0.8rem;
     border-radius: ${radios};
     background-color: #fff;
