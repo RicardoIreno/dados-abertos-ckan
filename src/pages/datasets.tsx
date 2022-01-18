@@ -3,7 +3,7 @@ import {DatasetCard} from '../components/molecules'
 import Default from '../components/templates/Default'
 import styled from 'styled-components'
 import { getAllDatasets } from '../libs/datasetLib'
-import { DatasetInfoResult } from '../types/types'
+import { DatasetProps } from '../types/types'
 
 
 const MyWrapper = styled(Wrapper)`
@@ -15,7 +15,7 @@ const MyWrapper = styled(Wrapper)`
 
 
 type Props = {
-  allDatasets: DatasetInfoResult[]
+  allDatasets: DatasetProps[]
  } 
 
 
@@ -39,12 +39,7 @@ export default function Datasets(p: Props) {
 			<MyWrapper>
         
         {p.allDatasets.map( d => 
-          <DatasetCard key={d.name} 
-            name={d.title} 
-            title={d.title}
-            tags={d.tags}
-            resources={d.resources}
-          /> )}
+          <DatasetCard key={d.name} dataset={d} /> )}
 
 			</MyWrapper>
 

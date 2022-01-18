@@ -1,5 +1,5 @@
 import ApiCkan from '../services/apiCkan'
-import { DatasetListResponse, DatasetInfoResponse, DatasetInfoResult } from '../types/types' 
+import { DatasetListResponse, DatasetInfoResponse, DatasetProps } from '../types/types' 
 
 export function listDatasets() {
   return ApiCkan
@@ -8,7 +8,7 @@ export function listDatasets() {
 }
 
 
-export function getDataset(id: string): Promise<DatasetInfoResult> {
+export function getDataset(id: string): Promise<DatasetProps> {
   return ApiCkan
     .get<DatasetInfoResponse>(`package_show?id=${id}` )
     .then(({ data }) => data.result);
@@ -16,7 +16,7 @@ export function getDataset(id: string): Promise<DatasetInfoResult> {
 
 
 export async function getAllDatasets() {
-  let allDatasets : DatasetInfoResult[] = []
+  let allDatasets : DatasetProps[] = []
   const datasetsIDs = (await listDatasets()) 
 
   for (let i = 0; i < datasetsIDs.length; i++ ) {  

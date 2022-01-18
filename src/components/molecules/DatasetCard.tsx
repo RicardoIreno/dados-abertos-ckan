@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import {theme} from '../../configs'
 import {Wrapper, TagComponent} from '../atoms'
-import { Tag, Resource } from '../../types/types'
+import { DatasetProps, Tag, Resource } from '../../types/types'
 
 const MyWrapper = styled(Wrapper)`
   max-width: 800px;
@@ -22,11 +22,7 @@ const Title = styled.span`
 
 type Props = {
   children?: ReactNode
-  name: string
-  title: string
-  tags?: Tag[]
-  resources?: Resource[]
-
+  dataset: DatasetProps
 }
 
 
@@ -44,18 +40,12 @@ type Props = {
 const DatasetCard = (p: Props) => {
   return(
     <MyWrapper>
-      <Title>{p.title}</Title>
+      <Title>{p.dataset.title}</Title>
 
-      <p>{p.resources.map( r => r.description)}</p>
+      <p>{p.dataset.resources.map( r => r.description)}</p>
 
-      {/* <span>Dados: {p.metadata_created}</span>
-      <span>Dados criados em: {p.metadata_created}</span>
-      <span>Dados modificados em: {p.metadata_created}</span>
 
-      <span>Organização: {p.oganizationTitle}</span> */}
-   
-
-      <span>{p.tags.map( t => <TagComponent key={t.id}> {t.display_name} </TagComponent>)}</span>
+      <span>{p.dataset.tags.map( t => <TagComponent key={t.id}> {t.display_name} </TagComponent>)}</span>
 
         {/* {children} */}
 

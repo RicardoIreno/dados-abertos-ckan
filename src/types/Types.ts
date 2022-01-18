@@ -1,24 +1,5 @@
-export type Resource = {
-  mimetype: string
-  cache_url?: string
-  hash: string
-  description: string
-  metadata_modified: Date
-  cache_last_updated?: string
-  url: string
-  name: string
-  format: string
-  package_id: string
-  created: Date
-  state: string
-  mimetype_inner?: string
-  last_modified: Date
-  position: number
-  url_type: string
-  id: string
-  resource_type?: string
-  size: number
-}
+
+// -- basic types --
 
 export type Tag = {
   vocabulary_id?: string
@@ -50,12 +31,37 @@ export type Organization = {
   approval_status: string
 }
 
-export type DatasetInfoResult = {
-  license_title: string
-  maintainer: string
-  relationships_as_object: string[]
-  private: boolean
-  maintainer_email: string
+export type Resource = {
+  mimetype: string
+  cache_url?: string
+  hash: string
+  description: string
+  metadata_modified: Date
+  cache_last_updated?: string
+  url: string
+  name: string
+  format: string
+  package_id: string
+  created: Date
+  state: string
+  mimetype_inner?: string
+  last_modified: Date
+  position: number
+  url_type: string
+  id: string
+  resource_type?: string
+  size: number
+}
+
+// ------------------------
+
+
+export type DatasetProps = {
+  license_title?: string
+  maintainer?: string
+  relationships_as_object?: string[]
+  private?: boolean
+  maintainer_email?: string
   num_tags: number
   id: string
   metadata_created: Date
@@ -82,10 +88,11 @@ export type DatasetInfoResult = {
   title: string
 }
 
+
 export type DatasetInfoResponse = {
   help: string
   success: boolean
-  result: DatasetInfoResult
+  result: DatasetProps
 }
 
 
@@ -93,4 +100,20 @@ export type DatasetListResponse = {
   help: string
   success: boolean
   result: string[]
+}
+
+
+export type SearchResponseResult = {
+  count: number
+  sort: string
+  // facets: Facets
+  results: DatasetProps[]
+  // search_facets: SearchFacets
+}
+
+
+export type SearchResponse = {
+  help: string
+  success: boolean
+  result: SearchResponseResult[]
 }
