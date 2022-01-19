@@ -1,4 +1,13 @@
-import { listDatasets, getDataset, getAllDatasets } from '../../libs/datasetLib'
+import { 
+  listDatasets, 
+  getDataset, 
+  getAllDatasets, 
+  searchDataset 
+} from '../../libs/datasetLib'
+
+import {
+  SearchResult
+} from '../../types/types'
 
 // https://demo.ckan.org/api/3/action/package_list
 // ["sample-dataset-1", "test_dataset"]
@@ -64,3 +73,23 @@ describe('== getDataset() ==', () => {
 
 //   })
 // }) 
+
+
+type ModelProps = {
+  help: string,
+  success: boolean
+}
+
+describe('== searchDataset() ==', () => {
+
+  it('Get search for a dataset that match with a string',  () => {
+    const test = "pentahotest"
+      
+    return searchDataset(test)
+      .then( res => { 
+        expect(res)
+          .toEqual(
+            expect.objectContaining( {count: 1} ) ) 
+    })
+  })
+}) 

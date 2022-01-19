@@ -103,11 +103,11 @@ export type DatasetListResponse = {
 }
 
 
-export type SearchResponseResult = {
-  count: number
-  sort: string
+export type SearchResult = {
+  count?: number | string
+  sort?: string
   // facets: Facets
-  results: DatasetProps[]
+  results?: DatasetProps[]
   // search_facets: SearchFacets
 }
 
@@ -115,5 +115,5 @@ export type SearchResponseResult = {
 export type SearchResponse = {
   help: string
   success: boolean
-  result: SearchResponseResult[]
+  result: SearchResult[]
 }
