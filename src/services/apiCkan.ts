@@ -1,6 +1,4 @@
 import axios from "axios"
-import { baseURL } from "../configs/configs"
-
+const baseURL = process.env.NEXT_PUBLIC_BASEURL
 const ApiCkan = axios.create( {baseURL} )
-
 export default ApiCkan

@@ -1,8 +1,7 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import {theme} from '../../configs'
 import {Wrapper, TagComponent} from '../atoms'
-import { DatasetProps, Tag, Resource } from '../../types/types'
+import { DatasetProps } from '../../types/Types'
 
 const MyWrapper = styled(Wrapper)`
   max-width: 800px;
@@ -15,9 +14,9 @@ const MyWrapper = styled(Wrapper)`
 `
 
 const Title = styled.span`
-  font-size: ${theme.sizes.DatasetCardTitle};
-  font-family: ${theme.tipography.special};
-  color: ${theme.colors.DatasetCardTitle};
+  font-size: ${props => props.theme.sizes.DatasetCardTitle};
+  font-family: ${props => props.theme.tipography.special};
+  color: ${props => props.theme.colors.DatasetCardTitle};
 `
 
 type Props = {

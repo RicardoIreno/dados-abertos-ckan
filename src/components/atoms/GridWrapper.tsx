@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import {theme} from '../../configs' 
 
 const GridWrapper = styled.div`
   width: 100%;

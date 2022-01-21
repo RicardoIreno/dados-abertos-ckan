@@ -3,7 +3,7 @@ import {DatasetCard} from '../components/molecules'
 import Default from '../components/templates/Default'
 import styled from 'styled-components'
 import { getAllDatasets } from '../libs/datasetLib'
-import { DatasetProps } from '../types/types'
+import { DatasetProps } from '../types/Types'
 
 
 const MyWrapper = styled(Wrapper)`

@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link' 
 import styled from 'styled-components'
-import {theme} from '../../configs'
 
 const MyWrapper = styled.div`
   display: inline-flex;
@@ -13,10 +12,10 @@ const MyWrapper = styled.div`
 `
 
 const Nav = styled.nav`
-  font-size: ${theme.sizes.h2};
-  color: ${theme.colors.menus};
-  font-family: ${theme.tipography.special};
-  font-size: ${theme.sizes.special};
+  font-size: ${props => props.theme.sizes.h2};
+  color: ${props => props.theme.colors.menus};
+  font-family: ${props => props.theme.tipography.special};
+  font-size: ${props => props.theme.sizes.special};
 `
 
 
