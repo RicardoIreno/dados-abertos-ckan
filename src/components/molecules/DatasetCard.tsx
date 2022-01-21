@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import {Wrapper, TagComponent} from '../atoms'
-import { DatasetProps } from '../../types/Types'
+import { DatasetProps } from '../../types/types'
 
 const MyWrapper = styled(Wrapper)`
   max-width: 800px;

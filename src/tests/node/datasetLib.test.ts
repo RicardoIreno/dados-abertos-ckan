@@ -24,13 +24,13 @@ import {
 // })
 
 
-// http://200.144.93.54/api/3/action/package_list
+// https://demo.ckan.org/api/3/action/package_list
 
 describe('== listDatasets() ==', () => {
 
   it('Get a datasets list',  () => {
     const expected = [
-      expect.stringMatching("pentahotest")
+      expect.stringMatching("test_dataset")
     ]
     
     return listDatasets().then( res => {
@@ -44,14 +44,14 @@ describe('== listDatasets() ==', () => {
 }) 
 
 
-// http://200.144.93.54/api/3/action/package_show?id=pentahotest
+// https://demo.ckan.org/api/3/action/package_show?id=test_dataset
 
 describe('== getDataset() ==', () => {
 
   it('Get a dataset info',  () => {
 
-    return getDataset('pentahotest').then( res => {
-      expect(res.id).toBe("dd045408-e183-4ff3-bcfd-3a39ad82548c")
+    return getDataset('test_dataset').then( res => {
+      expect(res.id).toBe("a74de57d-5d2a-4899-a498-44035c01fab6")
     })
 
   })
@@ -79,17 +79,18 @@ type ModelProps = {
   help: string,
   success: boolean
 }
+// https://demo.ckan.org/api/3/action/package_search?q=test_dataset
 
 describe('== searchDataset() ==', () => {
 
-  it('Get search for a dataset that match with a string',  () => {
-    const test = "pentahotest"
+  it('Get search for a dataset that match with a string', () => {
+    const test = "test_dataset"
       
     return searchDataset(test)
       .then( res => { 
         expect(res)
           .toEqual(
-            expect.objectContaining( {count: 1} ) ) 
+            expect.objectContaining( {count: 2} ) ) 
     })
   })
 }) 
