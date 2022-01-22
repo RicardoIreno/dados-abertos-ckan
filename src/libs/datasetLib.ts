@@ -10,15 +10,13 @@ import {
 
 export function listDatasets() {
   return ApiCkan
-    .get<DatasetListResponse>(`package_list` )
+    .get<DatasetListResponse>( `package_list` )
     .then(({ data }) => data.result )
 }
 
-
-
 export function getDataset(id: string): Promise<DatasetProps> {
   return ApiCkan
-    .get<DatasetInfoResponse>(`package_show?id=${id}` )
+    .get<DatasetInfoResponse>( `package_show?id=${id}` )
     .then(({ data }) => data.result)
 }
 
@@ -27,7 +25,7 @@ export function getDataset(id: string): Promise<DatasetProps> {
 
 export function searchDataset(q: string) {
   return ApiCkan
-    .get<SearchResponse>(`package_search?q=${q}` )
+    .get<SearchResponse>( `package_search?q=${q}` )
     .then( data => data.data.result);
 }
 
