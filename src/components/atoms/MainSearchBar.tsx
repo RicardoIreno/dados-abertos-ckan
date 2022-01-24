@@ -1,13 +1,14 @@
-import { ReactNode } from 'react'
+import { ChangeEventHandler, ReactNode, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Wrapper from '../atoms/Wrapper'
+import useDebounce from '../../libs/useDebounce'
+
 
 const radios = '20px'
 
 const MyWrapper = styled(Wrapper)`
   align-items: center;
-`
-
+  `
 const Input = styled.input`
     width: 100%;
     height: 3rem;
@@ -21,14 +22,34 @@ const Input = styled.input`
     font-size: 1.3rem;
 `
 
+type handleChange = (e: React.ChangeEvent<HTMLInputElement>) => void  
+type eventType = ChangeEventHandler<HTMLInputElement>
+// type eventType = React.ChangeEvent<HTMLInputElement>
+
 type Props = {
-  children: ReactNode
+  value: string
+  change: handleChange
 }
 
-const MainSearchBar = ({children, ...rest}: Props) => {
+const MainSearchBar = ( {value, change}: Props) => {
+  const [displayValue, setDisplayValue] = useState(value)
+  const debounceChange = useDebounce(change, 500)
+
+  function handleEvent( e: eventType ) {
+    setDisplayValue( e. )
+    debounceChange( ) 
+   }    
+  
+
   return (
     <MyWrapper>
-    <Input className="input" type="text" id="MainSearchBar" {...rest}></Input>
+    <Input 
+      type="search" 
+      id="MainSearchBar"  
+      value={displayValue} 
+      onChange={handleEvent}>
+        
+    </Input>
   </MyWrapper>
   )
 }

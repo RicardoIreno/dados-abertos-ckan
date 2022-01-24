@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useState } from 'react'
 import {MainSearchBar, Wrapper} from '../atoms/'
 import {SiteHeader, SiteFooter} from '../organisms'
 import { getAllDatasets } from '../../libs/datasetLib'
-import {dehydrate, QueryClient, useQuery} from 'react-query'
+import {dehydrate, DehydratedState, QueryClient, useQuery} from 'react-query'
 
 
 const MyWrapper = styled(Wrapper)`
@@ -16,6 +16,7 @@ const MyWrapper = styled(Wrapper)`
 
 type Props = {
   children: ReactNode
+	dehydratedState?: DehydratedState
 }
 
 
@@ -30,17 +31,29 @@ export async function getServerSideProps() {
    }
 }
 
+function someFunction(t: string): string {
+	return (t)
+}
 
-export default function Default({children}: Props ) {
-	const { data } = useQuery('myData', getAllDatasets)
+// useEffect( () => {
+// 	if (value)
+// }, [] )
+
+export default function Default({children, dehydratedState}: Props ) {
+	const [word, setWord] = useState('')
+
 	return (
 		<>
 			<SiteHeader />
 			
 			<MyWrapper>
-				<MainSearchBar>
+				<MainSearchBar 
+					value={word}
+					onChange={ (search: string) => setWord(search) }
+				>
 				</MainSearchBar>
 
+					
 					{children}
 				{/* onChange={(e) => {setTime(e.target.value) }} */}
 

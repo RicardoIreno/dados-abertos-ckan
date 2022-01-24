@@ -35,7 +35,7 @@ const SiteHeader = () => {
 
 			<Link href={'/'}>
 				<a>
-					<SiteTitle>{process.env.SITE_NAME}</SiteTitle>
+					<SiteTitle>Dados Abertos</SiteTitle>
 				</a>
 			</Link>
 
