@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import {Wrapper, TagComponent} from '../atoms'
-import { DatasetProps } from '../../types/types'
+import { Dataset } from '../../types/types'
 
 const MyWrapper = styled(Wrapper)`
   max-width: 800px;
@@ -20,21 +20,8 @@ const Title = styled.span`
 `
 
 type Props = {
-  children?: ReactNode
-  dataset: DatasetProps
+  dataset: Dataset
 }
-
-
-//  export const getServerSideProps = async () => {
-
-//   return {
-//     props: {
-//       allDatasets: (await getAllDatasets())
-//     }
-//   }
-
-// }
-
 
 const DatasetCard = (p: Props) => {
   return(
@@ -43,15 +30,16 @@ const DatasetCard = (p: Props) => {
 
       <p>{p.dataset.resources.map( r => r.description)}</p>
 
-
-      <span>{p.dataset.tags.map( t => <TagComponent key={t.id}> {t.display_name} </TagComponent>)}</span>
-
-        {/* {children} */}
-
+      <span>
+        {p.dataset.tags.map( t => 
+          <TagComponent 
+            key={t.id}> {t.display_name} 
+          </TagComponent>)
+        }
+      </span>
     </MyWrapper>
   )
 }
-
 
 export default DatasetCard
 

@@ -1,5 +1,5 @@
 
-// -- basic types --
+// -- BASIC TYPES --
 
 export type Tag = {
   vocabulary_id?: string
@@ -53,10 +53,8 @@ export type Resource = {
   size: number
 }
 
-// ------------------------
 
-
-export type DatasetProps = {
+export type Dataset = {
   license_title?: string
   maintainer?: string
   relationships_as_object?: string[]
@@ -89,31 +87,37 @@ export type DatasetProps = {
 }
 
 
-export type DatasetInfoResponse = {
-  help: string
-  success: boolean
-  result: DatasetProps
+// -- SEARCHS --
+
+export type SearchDataset = {
+  count?: number
+  sort?: string
+  results?: Dataset[]
 }
 
 
-export type DatasetListResponse = {
-  help: string
+
+// -- RESPONSES --
+
+
+export type ListResponse = {
   success: boolean
   result: string[]
 }
 
-
-export type SearchResult = {
-  count?: number | string
-  sort?: string
-  // facets: Facets
-  results?: DatasetProps[]
-  // search_facets: SearchFacets
-}
-
-
-export type SearchResponse = {
-  help: string
+export type DatasetResponse = {
   success: boolean
-  result: SearchResult[]
+  result: Dataset
 }
+
+export type TagResponse = {
+  success: boolean
+  result: Tag
+}
+
+export type SearchDatasetResponse = {
+  success: boolean
+  result: SearchDataset
+}
+
+

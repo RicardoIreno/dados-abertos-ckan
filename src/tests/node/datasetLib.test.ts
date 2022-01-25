@@ -6,7 +6,7 @@ import {
 } from '../../libs/datasetLib'
 
 import {
-  SearchResult
+  SearchDataset
 } from '../../types/types'
 
 // https://demo.ckan.org/api/3/action/package_list
