@@ -2,7 +2,8 @@ import {
   listDatasets, 
   getDataset, 
   getAllDatasets, 
-  searchDataset 
+  searchDataset,
+  searchDatasetByTag 
 } from '../../libs/datasetLib'
 
 import {
@@ -38,8 +39,6 @@ describe('== listDatasets() ==', () => {
         expect.arrayContaining(expected) 
       ) 
     })
-
-
   })
 }) 
 
@@ -87,6 +86,21 @@ describe('== searchDataset() ==', () => {
     const test = "test_dataset"
       
     return searchDataset(test)
+      .then( res => { 
+        expect(res)
+          .toEqual(
+            expect.objectContaining( {count: 2} ) ) 
+    })
+  })
+}) 
+
+
+describe('== searchDatasetByTag() ==', () => {
+
+  it('Get datasets by a tag list',  () => {
+    const tags = [ 'csv', 'pdf']
+    
+    return searchDatasetByTag(tags)
       .then( res => { 
         expect(res)
           .toEqual(

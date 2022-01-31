@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Checkbox from '../components/atoms/Checkbox'
 import Default from '../components/templates/Default'
 
 export default function Home() {
@@ -12,6 +13,8 @@ export default function Home() {
       </Head>
 
       <Default>
+
+        <Checkbox name="test" />
         
       </Default>
 

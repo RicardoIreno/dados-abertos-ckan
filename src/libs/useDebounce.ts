@@ -6,6 +6,7 @@ export default function useDebounce(
   ) {
 
   const timeoutRef = useRef(null)
+  
   function debounceFn(...args: any[]) {
     window.clearTimeout(timeoutRef.current)
     timeoutRef.current = window.setTimeout( ()=> {

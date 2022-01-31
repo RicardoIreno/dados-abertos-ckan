@@ -5,7 +5,7 @@ import { Dataset } from '../../types/types'
 
 const MyWrapper = styled(Wrapper)`
   max-width: 800px;
-  height: 150px;
+  height: 250px;
   margin: 1rem;
   align-items: center;
   background-color: #fff;

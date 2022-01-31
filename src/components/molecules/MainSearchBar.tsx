@@ -1,4 +1,4 @@
-import { ChangeEventHandler, ReactNode, useState } from 'react'
+import { ChangeEventHandler, InputHTMLAttributes, ReactNode, useState } from 'react'
 import styled from 'styled-components'
 import Wrapper from '../atoms/Wrapper'
 import useDebounce from '../../libs/useDebounce'
@@ -23,31 +23,24 @@ const Input = styled.input`
 `
 
 // type eventType = React.ChangeEvent<HTMLInputElement>
-type handleChange = (e: React.ChangeEvent<HTMLInputElement>) => void  
+// type handleChange = (e: React.ChangeEvent<HTMLInputElement>) => void  
+type handleChange = ChangeEventHandler
 
-type Props = {
+
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   value: string
-  onChange?: handleChange
 }
 
-const MainSearchBar = ( {value, onChange}: Props) => {
-  const [displayValue, setDisplayValue] = useState(value);
-  const debouncedChange = useDebounce(onChange, 500);
-  
-  function handleChange( value: string ) {
-    setDisplayValue(value);
-    debouncedChange(value);
-  }
 
+const MainSearchBar = ( {value, ...rest}: Props) => {
   return (
 
     <MyWrapper>
       <Input 
         type="search" 
         id="MainSearchBar"  
-        value={displayValue} 
-        onChange={ event => { handleChange(event.target.value)  } }
-        // onChange={handleChange}
+        value={value} 
+        {...rest}
       >
           
       </Input>
@@ -56,4 +49,4 @@ const MainSearchBar = ( {value, onChange}: Props) => {
 }
 
 
-export default MainSearchBar 
+export default MainSearchBar

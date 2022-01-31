@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {Dataset} from '../types/types' 
 import Default from '../components/templates/Default'
 import { Wrapper } from '../components/atoms'
-import { DatasetCard, MainSearchBar } from '../components/molecules'
+import { DatasetCard, MainSearchBarV2 } from '../components/molecules'
 import { searchDataset } from '../libs/datasetLib';
 
 const MyWrapper = styled(Wrapper)`
