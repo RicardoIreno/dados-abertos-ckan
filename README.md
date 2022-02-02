@@ -1,20 +1,12 @@
 # Front-end para o CKAN
 
-Projeto objetivando consumir APIs do CKAN
+## Projeto objetivando consumir APIs do CKAN
 
-### Linguagem
-![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=appveyor&logo=typescript&logoColor=white
+**Linguagem:** <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+**Framework:** <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
+**Biblioteca:** <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
 
-### Framework
-![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=appveyor&logo=nextdotjs&logoColor=white)
-
-### Bibliotecas
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=appveyor&logo=react&logoColor=61DAFB)
-)
-![Styled Components](https://img.shields.io/badge/styled--components-v4.4.1-orange?style=for-the-badge&logo=appveyor&logo=nextdotjs&logoColor=white)
-
-
-## To-do
+### To-do
 
 - [ok] Estrutura básica
 - [ok] chamadas básicas à API
@@ -28,7 +20,7 @@ Projeto objetivando consumir APIs do CKAN
 - Será preciso criar um servidor para comunicação com a api?
 
 
-## Refs
+### Refs
 
 **Base dos Dados**
 - https://basedosdados.org 
