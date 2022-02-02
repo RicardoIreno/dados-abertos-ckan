@@ -4,7 +4,7 @@ import {
   getAllDatasets, 
   searchDataset,
   searchDatasetByTag 
-} from '../../libs/datasetLib'
+} from '../../pages/api/datasetLib'
 
 import {
   SearchDataset

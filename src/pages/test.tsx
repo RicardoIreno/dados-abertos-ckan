@@ -4,7 +4,7 @@ import {Dataset} from '../types/types'
 import Default from '../components/templates/Default'
 import { Wrapper } from '../components/atoms'
 import { DatasetCard, MainSearchBar } from '../components/molecules'
-import { searchDataset } from '../libs/datasetLib';
+import { searchDataset } from './api/datasetLib';
 import useDebounce from '../libs/useDebounce'
 
 const MyWrapper = styled(Wrapper)`

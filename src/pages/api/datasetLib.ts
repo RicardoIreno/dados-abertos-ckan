@@ -1,11 +1,11 @@
-import ApiCkan from '../services/apiCkan'
+import ApiCkan from '../../services/apiCkan'
 import { 
   ListResponse, 
   DatasetResponse, 
   Dataset, 
   SearchDatasetResponse,
   SearchDataset,
-} from '../types/types' 
+} from '../../types/types' 
 
 
 export function listDatasets() {
