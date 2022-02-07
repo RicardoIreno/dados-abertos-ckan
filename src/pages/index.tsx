@@ -20,16 +20,7 @@ export default function Home() {
 
       <Default>
 
-        <Checkbox name="test" />
 
-        <CheckSelect 
-          name='testeSelect' 
-          options={teste}
-          value={tagSelectValue}
-          onChange={e => setTagSelectValue(e.target.value)}
-        />
-        
-        <FilterSelector name='Teste filtro' options={teste} />
 
       </Default>
 

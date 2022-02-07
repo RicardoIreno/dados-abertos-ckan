@@ -31,3 +31,6 @@
 
 **Repos da Rocketseat**
 - https://github.com/orgs/rocketseat-content/repositories?q=&type=all&language=&sort=
+
+
+- [GitHub - okfn/docker-ckan: Docker images and Docker Compose setup for CKAN](https://github.com/okfn/docker-ckan)

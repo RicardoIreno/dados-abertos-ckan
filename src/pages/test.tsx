@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import {Dataset} from '../types/types' 
+import {Dataset, DatasetsFound, DatasetsFoundT} from '../types/types' 
 import Default from '../components/templates/Default'
 import { Wrapper } from '../components/atoms'
 import { DatasetCard, MainSearchBar } from '../components/molecules'
-import { searchDataset } from './api/datasetLib';
+import { searchDataset, testDatasetFind } from '../libs/datasetLib';
 import useDebounce from '../libs/useDebounce'
 
 const MyWrapper = styled(Wrapper)`
@@ -20,23 +20,24 @@ export default function Tests() {
   const [countResults, setCountResults] = useState(0)
   const [term, setTerm] = useState('')
   const [displayValue, setDisplayValue ] = useState(term)
-  const debouncedChange = useDebounce( (term) => setTerm(term), 600 )
+  const debouncedChange = useDebounce( (str) => setTerm(str), 1000 )
 
   function searchHandler( str: string) {
+    console.log(`>>> seacrhHandler chamado -> ${str}`)
     setDisplayValue(str)
     debouncedChange(str)
   }
 
   useEffect( () => {
-    if (term)
-      setdatasets([])
-      console.log(`useEffect ${term}`)
-      searchDataset(term).then( 
-        d => {
-          setdatasets( d.results )
-          setCountResults( d.count )
-        }
-      )
+    console.log(`>>> useEffect chamado -> ${term}`)
+    setdatasets([])
+
+    testDatasetFind(term).then(
+      (res) => {
+        setdatasets(res.results)
+        console.log(`---> ${res}`)
+
+      })
     },[term] 
   )
 

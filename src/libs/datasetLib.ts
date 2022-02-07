@@ -1,11 +1,12 @@
-import ApiCkan from '../../services/apiCkan'
+import ApiCkan from '../services/apiCkan'
+import MyApi from '../services/apiCkan'
 import { 
   ListResponse, 
   DatasetResponse, 
   Dataset, 
   SearchDatasetResponse,
-  SearchDataset,
-} from '../../types/types' 
+  DatasetsFound,
+} from '../types/types' 
 
 
 export function listDatasets() {
@@ -20,11 +21,20 @@ export function getDataset(id: string): Promise<Dataset> {
     .then(({ data }) => data.result)
 }
 
-export function searchDataset(q: string) {
+export async function searchDataset(q: string | string [] ) {
   return ApiCkan
-    .get<SearchDatasetResponse>( `package_search?q=${q}` )
+    .get<SearchDatasetResponse>(`package_search?q=${q}`)
     .then( data => data.data.result);
 }
+
+
+export async function testDatasetFind(q: string | string [] ) {
+  return MyApi
+    .get<DatasetsFound>(`search/${q}`)
+    .then( res => res.data.results);
+}
+
+
 
 
 export async function getAllDatasets() {

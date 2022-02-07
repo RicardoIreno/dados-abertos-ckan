@@ -4,10 +4,10 @@ import {
   getAllDatasets, 
   searchDataset,
   searchDatasetByTag 
-} from '../../pages/api/datasetLib'
+} from '../../libs/datasetLib'
 
 import {
-  SearchDataset
+  DatasetsFound
 } from '../../types/types'
 
 // https://demo.ckan.org/api/3/action/package_list

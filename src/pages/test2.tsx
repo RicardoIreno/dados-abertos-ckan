@@ -4,7 +4,7 @@ import {Dataset} from '../types/types'
 import Default from '../components/templates/Default'
 import { Wrapper } from '../components/atoms'
 import { DatasetCard, MainSearchBarV2 } from '../components/molecules'
-import { searchDataset } from './api/datasetLib';
+import { searchDataset } from '../libs/datasetLib';
 
 const MyWrapper = styled(Wrapper)`
   flex-direction: column;
@@ -31,18 +31,8 @@ export default function Tests2() {
     <>
       <Default>
 
-      {/* <MainSearchBarV2 
-					value={term}
-					onChange={ }
-				>
-			</MainSearchBarV2> */}
-
       <MyWrapper>
 
-        <h3>{countResults} datasets encontrados</h3>
-
-        {datasets.map( d => 
-            <DatasetCard key={d.name} dataset={d} /> )}
 
       </MyWrapper>
         

@@ -89,12 +89,15 @@ export type Dataset = {
 
 // -- SEARCHS --
 
-export type SearchDataset = {
-  count?: number
+export type DatasetsFound = {
+  count?: number | 0
   sort?: string
   results?: Dataset[]
 }
 
+export type DatasetsFoundT = {
+  results?: Dataset[]
+}
 
 
 // -- RESPONSES --
@@ -117,7 +120,7 @@ export type TagResponse = {
 
 export type SearchDatasetResponse = {
   success: boolean
-  result: SearchDataset
+  result: DatasetsFound
 }
 
 
