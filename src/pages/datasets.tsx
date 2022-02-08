@@ -2,7 +2,7 @@ import {Wrapper} from '../components/atoms'
 import {DatasetCard} from '../components/molecules'
 import Default from '../components/templates/Default'
 import styled from 'styled-components'
-import { getAllDatasets } from '../libs/datasetLib'
+import { getAllDatasets } from './api/datasets/datasetLib'
 import { Dataset } from '../types/types'
 
 const MyWrapper = styled(Wrapper)`

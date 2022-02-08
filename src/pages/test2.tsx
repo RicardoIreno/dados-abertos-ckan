@@ -4,7 +4,7 @@ import {Dataset} from '../types/types'
 import Default from '../components/templates/Default'
 import { Wrapper } from '../components/atoms'
 import { DatasetCard, MainSearchBarV2 } from '../components/molecules'
-import { searchDataset } from '../libs/datasetLib';
+import { searchDataset } from './api/datasets/datasetLib';
 
 const MyWrapper = styled(Wrapper)`
   flex-direction: column;

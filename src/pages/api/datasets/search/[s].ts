@@ -1,16 +1,27 @@
 import  {NextApiRequest, NextApiResponse} from 'next'
-import { searchDataset } from '../../../../libs/datasetLib'
-  
+import { searchDataset } from '../datasetLib'
+import axios from 'axios'  
+import { SearchDatasetResponse } from '../../../../types/types'
+
+const URL = 'http://localhost:5000/api/3/action/'
+const Call = axios.create( { baseURL: URL } )
+
+
+async function callApi( s: string | string[] ) {
+  return Call.get<SearchDatasetResponse>(`package_search?q=${s}`)
+  .then( res => res.data.result );
+}
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const {q, s} = req.query
-  console.log(`s: ${s}`)
-  // if (s == undefined) return {}
-  
-  try {
-    const resp = await searchDataset(s.toString())
-    return res.status(200).json(resp)
+  const resp = await callApi(s)
+  return res.json( resp )
 
-  } catch (err) {
-    return res.json({messgae: 'Deu ruim', error: err})
-  }
+  // try {
+  //   const resp = await searchDataset(s.toString())
+  //   return res.status(200).json(resp)
+
+  // } catch (err) {
+  //   return res.json({messgae: 'Deu ruim', error: err})
+  // }
 }

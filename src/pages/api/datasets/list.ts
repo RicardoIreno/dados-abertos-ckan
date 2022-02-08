@@ -1,5 +1,5 @@
 import  {NextApiRequest, NextApiResponse} from 'next'
-import { listDatasets } from '../../../libs/datasetLib'
+import { listDatasets } from './datasetLib'
 
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {

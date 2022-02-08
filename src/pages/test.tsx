@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import {Dataset, DatasetsFound, DatasetsFoundT} from '../types/types' 
+import {Dataset, DatasetsFound } from '../types/types' 
 import Default from '../components/templates/Default'
 import { Wrapper } from '../components/atoms'
 import { DatasetCard, MainSearchBar } from '../components/molecules'
-import { searchDataset, testDatasetFind } from '../libs/datasetLib';
 import useDebounce from '../libs/useDebounce'
+import MyApi from '../services/MyApi'
 
 const MyWrapper = styled(Wrapper)`
   flex-direction: column;
@@ -13,33 +13,33 @@ const MyWrapper = styled(Wrapper)`
   align-items: center;
 `
 
+async function callMyApi( s: string ) {
+  return MyApi.get<DatasetsFound>(`datasets/search/${s}`)
+  .then( res => res.data )
+}
 
 
 export default function Tests() {
   const [datasets, setdatasets] = useState<Dataset[]>([])
   const [countResults, setCountResults] = useState(0)
   const [term, setTerm] = useState('')
-  const [displayValue, setDisplayValue ] = useState(term)
+  const [displayValue, setDisplayValue ] = useState('')
   const debouncedChange = useDebounce( (str) => setTerm(str), 1000 )
 
+
   function searchHandler( str: string) {
-    console.log(`>>> seacrhHandler chamado -> ${str}`)
     setDisplayValue(str)
     debouncedChange(str)
   }
 
   useEffect( () => {
-    console.log(`>>> useEffect chamado -> ${term}`)
     setdatasets([])
-
-    testDatasetFind(term).then(
-      (res) => {
-        setdatasets(res.results)
-        console.log(`---> ${res}`)
-
-      })
-    },[term] 
-  )
+    callMyApi(term).then( d => {
+      setCountResults(d.count)
+      setdatasets(d.results) 
+    })
+   
+  },[term] )
 
   return (
     <>
@@ -53,10 +53,12 @@ export default function Tests() {
 
       <MyWrapper>
 
-        <h3>{countResults} datasets encontrados</h3>
+        { !countResults ? <span></span> : 
+          <h3>{countResults} datasets encontrados</h3> }
 
-        {datasets.map( d => 
-          <DatasetCard key={d.name} dataset={d} /> )}
+        { !datasets ? <p>Pesquise por datasets</p> :
+            datasets.map( d => 
+              <DatasetCard key={d.name} dataset={d} /> ) }
 
       </MyWrapper>
         
