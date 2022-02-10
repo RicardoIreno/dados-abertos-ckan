@@ -5,7 +5,7 @@ import Default from '../components/templates/Default'
 import { Wrapper } from '../components/atoms'
 import { DatasetCard, MainSearchBar } from '../components/molecules'
 import useDebounce from '../libs/useDebounce'
-import MyApi from '../services/MyApi'
+import ApiMy from '../ApiMy'
 
 const MyWrapper = styled(Wrapper)`
   flex-direction: column;
@@ -13,9 +13,13 @@ const MyWrapper = styled(Wrapper)`
   align-items: center;
 `
 
-async function callMyApi( s: string ) {
-  return MyApi.get<DatasetsFound>(`datasets/search/${s}`)
+
+async function callApiMy( s: string ) {
+  return ApiMy.get<DatasetsFound>(`datasets/search/${s}`)
   .then( res => res.data )
+  // return axios.get<DatasetsFound>(`http://localhost:3000/api/datasets/search/${s}`)
+  // .then( res => res.data )
+
 }
 
 
@@ -34,7 +38,7 @@ export default function Tests() {
 
   useEffect( () => {
     setdatasets([])
-    callMyApi(term).then( d => {
+    callApiMy(term).then( d => {
       setCountResults(d.count)
       setdatasets(d.results) 
     })

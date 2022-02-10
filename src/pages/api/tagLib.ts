@@ -1,5 +1,5 @@
-import ApiCkan from '../services/apiCkan'
-import { ListResponse } from '../types/types'
+import ApiCkan from '../../apiCkan'
+import { ListResponse } from '../../types/types'
 
 export function listTags() {
   return ApiCkan

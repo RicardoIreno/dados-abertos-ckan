@@ -33,9 +33,6 @@ const MenuHeader = () => {
         </Link>{' | '}
         <Link href='/test2'>
           <a>Teste 2</a>
-        </Link>{' | '}
-        <Link href='/datasets'>
-          <a>Datasets</a>
         </Link>
       </Nav>
 

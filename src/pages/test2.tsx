@@ -13,19 +13,7 @@ const MyWrapper = styled(Wrapper)`
 `
 
 export default function Tests2() {
-  const [datasets, setdatasets] = useState<Dataset[]>([]);
-  const [countResults, setCountResults] = useState(0)
-  const [term, setTerm] = useState('');
 
-  useEffect(  () => {
-    if (term)
-      searchDataset(term).then( 
-        d => {
-          setdatasets( d.results )
-          setCountResults( d.count )
-        }
-    )
-  },[term] )
 
   return (
     <>

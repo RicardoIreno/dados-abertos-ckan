@@ -1,4 +1,4 @@
-import ApiCkan from '../../../services/apiCkan'
+import ApiCkan from '../../../apiCkan'
 import axios from 'axios'
 import { 
   ListResponse, 
@@ -9,7 +9,7 @@ import {
 } from '../../../types/types' 
 
 
-const MyApi = axios.create( {baseURL: process.env.NEXT_PUBLIC_MYAPI} )
+const ApiMy = axios.create( {baseURL: process.env.NEXT_PUBLIC_ApiMy} )
 
 export function listDatasets() {
   return ApiCkan
@@ -31,7 +31,7 @@ export async function searchDataset(q: string | string [] ) {
 
 
 export async function testDatasetFind(q: string | string [] ) {
-  return MyApi
+  return ApiMy
     .get<DatasetsFound>(`search/${q}`)
     .then( res => res.data);
 }
