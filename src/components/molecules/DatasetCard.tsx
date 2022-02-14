@@ -1,14 +1,15 @@
 import React from 'react'
 import Link from 'next/link' 
 import styled from 'styled-components'
-import {Wrapper, TagComponent} from '../atoms'
+import {Wrapper, TagComponent, DateFormated} from '../atoms'
 import { Dataset } from '../../types/types'
 
 const MyWrapper = styled(Wrapper)`
   max-width: 800px;
   height: 250px;
   margin: 1rem;
-  align-items: center;
+  padding: 2rem;
+  /* align-items: center; */
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0px 1px 10px -6px #000000;
@@ -24,19 +25,25 @@ type Props = {
   dataset: Dataset
 }
 
-const DatasetCard = (p: Props) => {
+const DatasetCard = ({dataset}: Props) => {
   return(
     <MyWrapper>
-      <Title>{p.dataset.title}</Title>
 
-      <Link href={`/datasets/${p.dataset.name}`}>
-          <a>{p.dataset.name}</a>
+      <Link href={`/datasets/${dataset.name}`}>
+        <a><Title>{dataset.title}</Title></a>
       </Link>
 
-      <p>{p.dataset.resources.map( r => r.description)}</p>
+      <p>{dataset.notes}</p>
+
+      <span>Grupo: {dataset.groups[0].display_name}</span>
+
+      <span>{dataset.num_resources} 
+        { dataset.num_resources == 1 ? ' recurso' : ' recursos' }
+      </span>
+
 
       <span>
-        {p.dataset.tags.map( t => 
+        {dataset.tags.map( t => 
           <TagComponent 
             key={t.id}> {t.display_name} 
           </TagComponent>)

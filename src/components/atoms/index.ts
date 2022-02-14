@@ -1,5 +1,11 @@
 import GridWrapper from './GridWrapper'
 import Wrapper from './Wrapper'
 import TagComponent from './TagComponent'
+import DateFormated from './DateFormated'
 
-export {GridWrapper, Wrapper, TagComponent}
+export {
+  DateFormated,
+  GridWrapper, 
+  Wrapper, 
+  TagComponent,
+}

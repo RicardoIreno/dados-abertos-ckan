@@ -7,7 +7,6 @@ import { Wrapper } from '../components/atoms'
 import useDebounce from '../libs/useDebounce'
 import styled from 'styled-components'
 import ApiMy from '../ApiMy'
-import Link from 'next/link' 
 
 
 const MyWrapper = styled(Wrapper)`
@@ -69,11 +68,6 @@ export default function Home() {
           { !datasets ? <p>Pesquise por datasets</p> :
               datasets.map( d => 
                 <DatasetCard key={d.name} dataset={d} /> ) }
-
-          {/* <Link href={`/datasets/${name}`}> */}
-          <Link href={`/datasets/frutas`}>
-          <a>alguma coisa</a>
-          </Link>
 
         </MyWrapper>
       </Default>

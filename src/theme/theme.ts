@@ -33,7 +33,7 @@ const theme = {
     sitetitle: '1.4',
     special:'1.1rem',
     hmbottom: '1.2rem' ,
-    DatasetCardTitle: '1.2rem',
+    DatasetCardTitle: '1.5rem',
 
   },
   tipography: {
