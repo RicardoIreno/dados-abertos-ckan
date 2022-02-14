@@ -2,23 +2,21 @@ import { ThemeProvider } from 'styled-components'
 import GlobalStyle from '../theme/global'
 import {theme} from '../theme'
 import '../theme/fonts.css'
-import {Hydrate, QueryClient, QueryClientProvider} from 'react-query'
+import {Hydrate, QueryClientProvider} from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import {useState} from 'react'
-// import queryClient from '../services/query'
-
+import queryClient from '../query'
 
 function MyApp({ Component, pageProps }) {
-  const [queryClient] = useState(
-    () => 
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            staleTime: 20 * 1000,
-          },
-        },
-      })
-  )
+  // const [queryClient] = useState(
+  //   () => 
+  //     new QueryClient({
+  //       defaultOptions: {
+  //         queries: {
+  //           staleTime: 20 * 1000,
+  //         },
+  //       },
+  //     })
+  // )
 
   return(
     <QueryClientProvider client={queryClient}>

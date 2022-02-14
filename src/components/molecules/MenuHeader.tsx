@@ -29,10 +29,7 @@ const MenuHeader = () => {
           <a>Home</a>
         </Link>{' | '}
         <Link href='/test'>
-          <a>Teste 1</a>
-        </Link>{' | '}
-        <Link href='/test2'>
-          <a>Teste 2</a>
+          <a>Testes</a>
         </Link>
       </Nav>
 
