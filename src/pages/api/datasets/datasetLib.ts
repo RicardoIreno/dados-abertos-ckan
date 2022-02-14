@@ -1,4 +1,4 @@
-import ApiCkan from '../../../apiCkan'
+import ApiCkan from '../../../ApiCkan'
 import axios from 'axios'
 import { 
   ListResponse, 
@@ -17,11 +17,11 @@ export function listDatasets() {
     .then(({ data }) => data.result )
 }
 
-export function getDataset(id: string): Promise<Dataset> {
+export function getDataset(id: string | string[]): Promise<Dataset> {
   return ApiCkan
     .get<DatasetResponse>( `package_show?id=${id}` )
     .then(({ data }) => data.result)
-}
+} 
 
 export async function searchDataset(q: string | string [] ) {
   return ApiCkan

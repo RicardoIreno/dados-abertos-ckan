@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
+import Link from 'next/link' 
 import styled from 'styled-components'
 import {Wrapper, TagComponent} from '../atoms'
 import { Dataset } from '../../types/types'
@@ -27,6 +28,10 @@ const DatasetCard = (p: Props) => {
   return(
     <MyWrapper>
       <Title>{p.dataset.title}</Title>
+
+      <Link href={`/datasets/${p.dataset.name}`}>
+          <a>{p.dataset.name}</a>
+      </Link>
 
       <p>{p.dataset.resources.map( r => r.description)}</p>
 
