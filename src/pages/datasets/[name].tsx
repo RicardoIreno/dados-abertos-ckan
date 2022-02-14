@@ -1,9 +1,10 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Default from '../../components/templates/Default'
-import { Wrapper } from '../../components/atoms'
+import { TagComponent, Wrapper, DateFormated } from '../../components/atoms'
 import styled from 'styled-components'
 import {getDataset, listDatasets} from '../api/datasets/datasetLib'
-import { Dataset } from '../../types/types'
+import { Dataset, Group } from '../../types/types'
+import Link from 'next/link'
 
 const MyWrapper = styled(Wrapper)`
   flex-direction: column;
@@ -26,13 +27,13 @@ export async function getStaticPaths() {
   return { paths, fallback: false }
 }
 
-
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     return {
       props: {
         d: await getDataset(params.name)
-      }
+      },
+      revalidate: 10 // 60 * 60 * 24 // 24 hrs
     }
 
   } catch (err: any) {
@@ -46,8 +47,44 @@ export default function Show(props: Props) {
   return (
     <Default>
       <h1>{props.d.name}</h1>
+      <p>{props.d.notes}</p>
       
-      <h2>{props.d.name}</h2>
+      <p>{props.d.organization.title}</p>
+      <p>{props.d.groups.map( g => {
+        <p>{g.title}</p>
+      })}</p>
+
+      <span>
+        {props.d.tags.map( t => 
+          <TagComponent 
+            key={t.id}> {t.display_name} 
+          </TagComponent>
+        )}
+      </span>
+
+
+      <div>
+        <p>Resources: {props.d.num_resources}</p>
+        {props.d.resources.map(
+          r => 
+            <div key={r.id}>
+              <h3>{r.name}</h3>
+              <p>{r.description}</p>
+              <p>{r.format}</p>
+
+              <span>Criado em:</span>
+              <DateFormated input={r.created}/>
+
+              <span>Modificado em:</span>
+              <DateFormated input={r.last_modified}/>
+
+              <Link href={r.url}>
+                <a>{r.url}</a>
+              </Link>
+            </div>
+        )}
+      </div>
+    
     </Default>
   )
 }
