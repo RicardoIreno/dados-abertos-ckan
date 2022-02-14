@@ -95,11 +95,6 @@ export type DatasetsFound = {
   results?: Dataset[]
 }
 
-export type DatasetsFoundT = {
-  results?: Dataset[]
-}
-
-
 // -- RESPONSES --
 
 
