@@ -1,57 +1,91 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
+import Link from 'next/link' 
 import styled from 'styled-components'
-import {Wrapper, TagComponent} from '../atoms'
-import { DatasetProps } from '../../types/types'
+import {Wrapper, TagComponent} from 'components/atoms'
+import { Dataset, Group } from 'types'
 
 const MyWrapper = styled(Wrapper)`
   max-width: 800px;
-  height: 150px;
-  margin: 1rem;
-  align-items: center;
+  min-height: 200px;
+  margin: 1rem 1rem 0.3rem 1rem;
+  padding: 2rem;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0px 1px 10px -6px #000000;
 `
 
 const Title = styled.span`
-  font-size: ${props => props.theme.sizes.DatasetCardTitle};
+  font-size: 1.5rem;
   font-family: ${props => props.theme.tipography.special};
   color: ${props => props.theme.colors.DatasetCardTitle};
+  margin-bottom: 1rem
 `
 
+const Txt = styled.p`
+  font-size: .9rem;
+  font-family: ${props => props.theme.tipography.text};
+  margin: .20rem .25rem .25rem 0 
+`
+
+const B = styled.span`
+  font-size: .9rem;
+  font-weight: 600;
+  font-family: ${props => props.theme.tipography.text};
+`
+
+const TagWrapper = styled.footer`
+  margin-top: 2rem;
+`
+
+
 type Props = {
-  children?: ReactNode
-  dataset: DatasetProps
+  dataset: Dataset
 }
 
 
-//  export const getServerSideProps = async () => {
+function Groups(g: Group[]) {
+  switch (g.length) {
+    case 0: return ('')
+    case 1: return ( 
+      <Txt><B>Grupo: </B>{g[0].title}</Txt>
+    )
 
-//   return {
-//     props: {
-//       allDatasets: (await getAllDatasets())
-//     }
-//   }
+    default: return (
+      <Txt><B>Grupos: </B>{g.map( g => {
+        <span>{g.title} </span>
+      })}</Txt>
+    )
+  }
+}
 
-// }
-
-
-const DatasetCard = (p: Props) => {
+const DatasetCard = ({dataset}: Props) => {
   return(
     <MyWrapper>
-      <Title>{p.dataset.title}</Title>
 
-      <p>{p.dataset.resources.map( r => r.description)}</p>
+      <Link href={`/datasets/${dataset.name}`}>
+        <a><Title>{dataset.title}</Title></a>
+      </Link>
 
+      <Txt>{dataset.notes}</Txt>      
+      
+      {Groups(dataset.groups)}
 
-      <span>{p.dataset.tags.map( t => <TagComponent key={t.id}> {t.display_name} </TagComponent>)}</span>
+      <B>{dataset.num_resources} 
+          { dataset.num_resources == 1 ? ' recurso' : ' recursos' }</B>
+      
 
-        {/* {children} */}
-
+      
+      <TagWrapper>
+      {dataset.tags.map( t => 
+        <TagComponent key={t.id}> {t.display_name} </TagComponent>)}
+        </TagWrapper>
+        
+      {dataset.groups.map( g => {
+        <img src={g.image_display_url}/>
+      })}
     </MyWrapper>
   )
 }
-
 
 export default DatasetCard
 

@@ -2,12 +2,13 @@ import {
   listDatasets, 
   getDataset, 
   getAllDatasets, 
-  searchDataset 
-} from '../../libs/datasetLib'
+  searchDataset,
+  searchDatasetByTag 
+} from 'services/adaptersCkan'
 
 import {
-  SearchResult
-} from '../../types/types'
+  DatasetsFound
+} from '../../types'
 
 // https://demo.ckan.org/api/3/action/package_list
 // ["sample-dataset-1", "test_dataset"]
@@ -38,8 +39,6 @@ describe('== listDatasets() ==', () => {
         expect.arrayContaining(expected) 
       ) 
     })
-
-
   })
 }) 
 
@@ -87,6 +86,21 @@ describe('== searchDataset() ==', () => {
     const test = "test_dataset"
       
     return searchDataset(test)
+      .then( res => { 
+        expect(res)
+          .toEqual(
+            expect.objectContaining( {count: 2} ) ) 
+    })
+  })
+}) 
+
+
+describe('== searchDatasetByTag() ==', () => {
+
+  it('Get datasets by a tag list',  () => {
+    const tags = [ 'csv', 'pdf']
+    
+    return searchDatasetByTag(tags)
       .then( res => { 
         expect(res)
           .toEqual(

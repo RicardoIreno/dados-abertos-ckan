@@ -1,10 +1,7 @@
 import styled from 'styled-components'
 import React, { ReactNode } from 'react'
-import {MainSearchBar, Wrapper} from '../atoms/'
-import {SiteHeader, SiteFooter} from '../organisms'
-import { getAllDatasets } from '../../libs/datasetLib'
-import {dehydrate, QueryClient, useQuery} from 'react-query'
-
+import {Wrapper} from 'components/atoms/'
+import {SiteHeader, SiteFooter} from 'components/organisms'
 
 const MyWrapper = styled(Wrapper)`
 	min-height: 100vh;
@@ -19,33 +16,15 @@ type Props = {
 }
 
 
-export async function getServerSideProps() {
-	const queryClient = new QueryClient()
-	await queryClient.prefetchQuery('myData', getAllDatasets )
-
-   return {
-     props: {
-       dehydratedState: dehydrate(queryClient),
-     },
-   }
-}
-
-
 export default function Default({children}: Props ) {
-	const { data } = useQuery('myData', getAllDatasets)
 	return (
 		<>
-			<SiteHeader />
+			<SiteHeader />		
+				<MyWrapper>
 			
-			<MyWrapper>
-				<MainSearchBar>
-				</MainSearchBar>
+						{children}
 
-					{children}
-				{/* onChange={(e) => {setTime(e.target.value) }} */}
-
-			</MyWrapper>
-
+				</MyWrapper>
 			<SiteFooter />
 		</>
 	)

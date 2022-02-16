@@ -28,11 +28,8 @@ const MenuHeader = () => {
         <Link href='/'>
           <a>Home</a>
         </Link>{' | '}
-        <Link href='/datasets'>
-          <a>Datasets</a>
-        </Link>{' | '}
-        <Link href='/about'>
-          <a>About</a>
+        <Link href='/test'>
+          <a>Testes</a>
         </Link>
       </Nav>
 

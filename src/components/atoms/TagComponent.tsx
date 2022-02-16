@@ -6,7 +6,7 @@ type Props = {
 }
 
 const Wrapper = styled.span`
-  font-size: .9rem;
+  font-size: 1rem;
   padding: .25rem .50rem;
   margin: 3rem .25rem;
   border-radius: 10px;

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    // "baseUrl": "src",
+    "baseUrl": "src",
     "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "esnext",
@@ -28,7 +28,7 @@
     "**/*.tsx", 
     "**/*.js",
     "**/*.jsx"
-  ],
+, "src/query.ss"  ],
   "exclude": [
     "node_modules",
     ".next", 

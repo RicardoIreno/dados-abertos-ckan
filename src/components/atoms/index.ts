@@ -1,6 +1,11 @@
 import GridWrapper from './GridWrapper'
-import MainSearchBar from './MainSearchBar'
 import Wrapper from './Wrapper'
 import TagComponent from './TagComponent'
+import DateFormated from './DateFormated'
 
-export {GridWrapper, MainSearchBar, Wrapper, TagComponent}
+export {
+  DateFormated,
+  GridWrapper, 
+  Wrapper, 
+  TagComponent,
+}
