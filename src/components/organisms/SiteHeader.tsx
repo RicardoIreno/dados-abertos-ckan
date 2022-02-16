@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import {MenuHeader} from '../molecules'
+import {MenuHeader} from 'components/molecules'
 
 const MyWrapper = styled.header`
   top: 0;

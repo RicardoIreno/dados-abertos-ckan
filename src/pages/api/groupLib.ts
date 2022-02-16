@@ -1,5 +1,5 @@
-import ApiCkan from '../../apiCkan'
-import { ListResponse } from '../../types/types'
+import {ApiCkan} from 'services'
+import { ListResponse } from 'types'
 
 export function listDatasets() {
   return ApiCkan

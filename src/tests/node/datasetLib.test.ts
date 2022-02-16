@@ -4,11 +4,11 @@ import {
   getAllDatasets, 
   searchDataset,
   searchDatasetByTag 
-} from '../../pages/api/datasets/datasetLib'
+} from 'services/adaptersCkan'
 
 import {
   DatasetsFound
-} from '../../types/types'
+} from '../../types'
 
 // https://demo.ckan.org/api/3/action/package_list
 // ["sample-dataset-1", "test_dataset"]

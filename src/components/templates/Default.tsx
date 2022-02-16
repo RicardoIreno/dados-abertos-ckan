@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import React, { ReactNode } from 'react'
-import {Wrapper} from '../atoms/'
-import {SiteHeader, SiteFooter} from '../organisms'
+import {Wrapper} from 'components/atoms/'
+import {SiteHeader, SiteFooter} from 'components/organisms'
 
 const MyWrapper = styled(Wrapper)`
 	min-height: 100vh;

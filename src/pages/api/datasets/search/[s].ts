@@ -1,7 +1,6 @@
 import  {NextApiRequest, NextApiResponse} from 'next'
-import { searchDataset } from '../datasetLib'
 import axios from 'axios'  
-import { SearchDatasetResponse } from '../../../../types/types'
+import { SearchDatasetResponse } from 'types'
 
 const URL = 'http://localhost:5000/api/3/action/'
 const Call = axios.create( { baseURL: URL } )

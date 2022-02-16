@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
-import Head from 'next/head'
-import { DatasetCard, MainSearchBar } from '../components/molecules'
-import Default from '../components/templates/Default'
-import {Dataset, DatasetsFound } from '../types/types' 
-import { Wrapper } from '../components/atoms'
-import useDebounce from '../libs/useDebounce'
+import useDebounce from 'utils/useDebounce'
+import { Wrapper } from 'components/atoms'
+import { DatasetCard, MainSearchBar, HeadApp } from 'components/molecules'
+import Default from 'components/templates/Default'
+import { searchDataset } from 'services/adaptersMyApi'
 import styled from 'styled-components'
-import ApiMy from '../ApiMy'
+import {Dataset } from 'types' 
 
 
 const MyWrapper = styled(Wrapper)`
@@ -15,12 +14,6 @@ const MyWrapper = styled(Wrapper)`
   align-items: center;
 `
 
-async function callApiMy( s: string ) {
-  return ApiMy.get<DatasetsFound>(`datasets/search/${s}`)
-  .then( res => res.data )
-}
-
-const name = 'frutas'
 
 export default function Home() {
   const debouncedChange = useDebounce( (str) => setTerm(str), 1000 )
@@ -37,7 +30,7 @@ export default function Home() {
 
   useEffect( () => {
     setdatasets([])
-    callApiMy(term).then( d => {
+    searchDataset(term).then( d => {
       setCountResults(d.count)
       setdatasets(d.results) 
     })
@@ -47,11 +40,7 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Testes CKAN</title>
-        <meta name="description" content="Portfólio Ricardo" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <HeadApp />
 
       <Default>
         <MainSearchBar 

@@ -1,15 +1,11 @@
-import ApiCkan from '../../../ApiCkan'
-import axios from 'axios'
+import {ApiCkan} from 'services'
 import { 
   ListResponse, 
   DatasetResponse, 
   Dataset, 
   SearchDatasetResponse,
-  DatasetsFound,
-} from '../../../types/types' 
+} from 'types' 
 
-
-const ApiMy = axios.create( {baseURL: process.env.NEXT_PUBLIC_ApiMy} )
 
 export function listDatasets() {
   return ApiCkan
@@ -27,13 +23,6 @@ export async function searchDataset(q: string | string [] ) {
   return ApiCkan
     .get<SearchDatasetResponse>(`package_search?q=${q}`)
     .then( data => data.data.result);
-}
-
-
-export async function testDatasetFind(q: string | string [] ) {
-  return ApiMy
-    .get<DatasetsFound>(`search/${q}`)
-    .then( res => res.data);
 }
 
 

@@ -1,5 +1,5 @@
 import React, { SelectHTMLAttributes, useState} from 'react'
-import Checkbox from '../atoms/Checkbox'
+import Checkbox from 'components/atoms/Checkbox'
 import styled from 'styled-components'
 import { CheckSelect } from '.'
 

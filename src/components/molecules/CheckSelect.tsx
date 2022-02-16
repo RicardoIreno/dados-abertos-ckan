@@ -1,5 +1,5 @@
 import React, { SelectHTMLAttributes, useState} from 'react'
-import Checkbox from '../atoms/Checkbox'
+import Checkbox from 'components/atoms/Checkbox'
 
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {

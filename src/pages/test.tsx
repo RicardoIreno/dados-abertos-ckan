@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
+import {Dataset, DatasetsFound } from 'types' 
+import { Wrapper } from 'components/atoms'
+import { DatasetCard, MainSearchBar } from 'components/molecules'
+import Default from 'components/templates/Default'
+import useDebounce from 'utils/useDebounce'
 import styled from 'styled-components'
-import {Dataset, DatasetsFound } from '../types/types' 
-import Default from '../components/templates/Default'
-import { Wrapper } from '../components/atoms'
-import { DatasetCard, MainSearchBar } from '../components/molecules'
-import useDebounce from '../libs/useDebounce'
-import ApiMy from '../ApiMy'
+import {ApiMy} from 'services'
 
 const MyWrapper = styled(Wrapper)`
   flex-direction: column;

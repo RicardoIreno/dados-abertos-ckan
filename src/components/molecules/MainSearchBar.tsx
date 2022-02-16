@@ -1,7 +1,7 @@
-import { ChangeEventHandler, InputHTMLAttributes, ReactNode, useState } from 'react'
+import { ChangeEventHandler, InputHTMLAttributes } from 'react'
 import styled from 'styled-components'
-import Wrapper from '../atoms/Wrapper'
-import useDebounce from '../../libs/useDebounce'
+import {Wrapper} from 'components/atoms/'
+
 
 
 const radios = '20px'

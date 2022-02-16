@@ -1,6 +1,6 @@
 import { ChangeEventHandler, ReactNode, useState } from 'react'
 import styled from 'styled-components'
-import Wrapper from '../atoms/Wrapper'
+import {Wrapper} from 'components/atoms/'
 
 const radios = '20px'
 

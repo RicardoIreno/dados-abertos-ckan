@@ -1,9 +1,9 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
-import Default from '../../components/templates/Default'
-import { TagComponent, Wrapper, DateFormated } from '../../components/atoms'
+import { GetStaticProps } from 'next'
+import Default from 'components/templates/Default'
+import { TagComponent, Wrapper, DateFormated } from 'components/atoms'
+import {getDataset, listDatasets} from 'services/adaptersCkan'
+import { Dataset, Group } from 'types'
 import styled from 'styled-components'
-import {getDataset, listDatasets} from '../api/datasets/datasetLib'
-import { Dataset, Group } from '../../types/types'
 import Link from 'next/link'
 
 const MyWrapper = styled(Wrapper)`

@@ -21,7 +21,7 @@ const theme = {
     heading1: '#474747',
     headings: '#474747',
     menus: '#6b6b6b',
-    DatasetCardTitle: '#6b6b6b',
+    DatasetCardTitle: '#000',
     headerbg: '#fff',
 
   },
@@ -39,7 +39,7 @@ const theme = {
   tipography: {
     h1: "'Oswald', sans-serif",
     headings: "'Oswald', sans-serif",
-    text: "'Merriweather', serif",
+    text: "'Roboto', serif",
     special: "'Oswald', sans-serif",
   },
   breakpoint: {

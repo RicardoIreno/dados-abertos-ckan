@@ -1,7 +1,7 @@
 import React, {  ReactNode } from 'react'
 import Default from './Default'
 import styled from 'styled-components'
-import {Wrapper} from '../atoms/'
+import {Wrapper} from 'components/atoms/'
 
 const MyWrapper = styled(Wrapper)`
   justify-content: center;
