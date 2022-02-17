@@ -1,11 +1,8 @@
-import { useEffect, useState } from 'react'
-import useDebounce from 'utils/useDebounce'
 import { Wrapper } from 'components/atoms'
-import { DatasetCard, MainSearchBar, HeadApp } from 'components/molecules'
+import { HeadApp } from 'components/molecules'
+import {Search, DatasetsShowcase} from 'components/organisms'
 import Default from 'components/templates/Default'
-import { searchDataset } from 'services/adaptersMyApi'
 import styled from 'styled-components'
-import {Dataset } from 'types' 
 
 
 const MyWrapper = styled(Wrapper)`
@@ -14,50 +11,17 @@ const MyWrapper = styled(Wrapper)`
   align-items: center;
 `
 
-
 export default function Home() {
-  const debouncedChange = useDebounce( (str) => setTerm(str), 1000 )
-  const [datasets, setdatasets] = useState<Dataset[]>([])
-  const [displayValue, setDisplayValue ] = useState('')
-  const [countResults, setCountResults] = useState(0)
-  const [term, setTerm] = useState('')
-
-
-  function searchHandler( str: string) {
-    setDisplayValue(str)
-    debouncedChange(str)
-  }
-
-  useEffect( () => {
-    setdatasets([])
-    searchDataset(term).then( d => {
-      setCountResults(d.count)
-      setdatasets(d.results) 
-    })
-   
-  },[term] )
-
-
   return (
     <>
       <HeadApp />
 
       <Default>
-        <MainSearchBar 
-          value={displayValue}
-          onChange={ e => searchHandler(e.target.value) }
-        >
-        </MainSearchBar>
+        <Search />
 
         <MyWrapper>
-
-          { !countResults ? <span></span> : 
-            <h3>{countResults} datasets encontrados</h3> }
-
-          { !datasets ? <p>Pesquise por datasets</p> :
-              datasets.map( d => 
-                <DatasetCard key={d.name} dataset={d} /> ) }
-
+          <DatasetsShowcase />
+          
         </MyWrapper>
       </Default>
 

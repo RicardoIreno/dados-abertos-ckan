@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import {useQuery, useQueryClient, useMutation} from 'react-query'
 import { Wrapper } from 'components/atoms'
 import { DatasetCard } from 'components/molecules'
-import { Dataset, DatasetsFound } from 'types' 
+import { DatasetsFound } from 'types' 
 import styled from 'styled-components'
 
 const MyWrapper = styled(Wrapper)`
