@@ -7,6 +7,7 @@ import useDebounce from 'utils/useDebounce'
 import styled from 'styled-components'
 import { useQuery, useQueryClient, useMutation } from 'react-query'
 import { searchDataset } from 'services/adaptersMyApi'
+import DatasetsShowcase from 'components/organisms/DatasetsShowcase'
 
 const MyWrapper = styled(Wrapper)`
   flex-direction: column;
@@ -16,48 +17,29 @@ const MyWrapper = styled(Wrapper)`
 
 
 export default function Tests() {
-  const debouncedChange = useDebounce( (str) => setTerm(str), 1000 )
-  const [datasets, setDatasets] = useState<Dataset[]>([])
   const [displayValue, setDisplayValue ] = useState('')
-  const [countResults, setCountResults] = useState(0)
   const [term, setTerm] = useState('')
-
   const queryClient = useQueryClient()
-  
+  const debouncedChange = useDebounce( (str) => setTerm(str), 1000 )
   const queryDatasets = useQuery('datasets', () => {} )
-  // : UseQueryResult<TData, TError>
- 
-  // TQueryFnData = unknown,
-  // TError = unknown,
-  // TData = TQueryFnData,
-  // TQueryKey extends QueryKey = QueryKey
 
+  const mutationDatasets = useMutation( 'datasets', (term: string ) => 
+    searchDataset(term).then( d => d ), {
 
-
-  const mutationDatasets = useMutation( 
-    'datasets', 
-    () => searchDataset(term).then( d => d ),
-    {
     onSuccess: ( data ) => {
-      queryClient.invalidateQueries('datasets')
-      setDatasets( data.results )
-      setCountResults( data.count )
+      queryClient.setQueryData('datasets', data )
     },
   })
-
 
 
   function searchHandler( str: string) {
     setDisplayValue(str)
     debouncedChange(str)
-    // mutationSearchTerm.mutate(str)
   }
 
   useEffect( () => {
-    mutationDatasets.mutate()
-
-    // setCountResults(d.count)
-    // setdatasets(d.results) 
+    if (term == '') queryClient.invalidateQueries('datasets')
+    mutationDatasets.mutate(term)
   },[term] )
 
   return (
@@ -70,16 +52,8 @@ export default function Tests() {
 			>
   		</MainSearchBar>
 
-      <MyWrapper>
+      <DatasetsShowcase />
 
-        { !countResults ? <span></span> : 
-          <h3>{countResults} datasets encontrados</h3> }
-
-        { !datasets ? <p>Pesquise por datasets</p> :
-            datasets.map( d => 
-              <DatasetCard key={d.name} dataset={d} /> ) }
-
-      </MyWrapper>
         
       </Default>
     </>
