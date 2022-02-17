@@ -14,13 +14,13 @@ export function listDatasets() {
 }
 
 export function getDataset(id: string | string[]): Promise<Dataset> {
-  return ApiCkan
+  if (id !== '') return ApiCkan
     .get<DatasetResponse>( `package_show?id=${id}` )
     .then(({ data }) => data.result)
 } 
 
 export async function searchDataset(q: string | string [] ) {
-  return ApiCkan
+  if (q !== '') return ApiCkan
     .get<SearchDatasetResponse>(`package_search?q=${q}`)
     .then( data => data.data.result);
 }

@@ -3,6 +3,6 @@ import { DatasetsFound } from 'types'
 
 
 export async function searchDataset( s: string ) {
-  return ApiMy.get<DatasetsFound>(`datasets/search/${s}`)
-  .then( res => res.data )
+  if (s !== '') return ApiMy.get<DatasetsFound>(`datasets/search/${s}`)
+    .then( res => res.data )
 }
