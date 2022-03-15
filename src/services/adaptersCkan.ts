@@ -1,10 +1,17 @@
-import {ApiCkan} from 'services'
+import {ApiCkan} from '../services'
 import { 
   ListResponse, 
   DatasetResponse, 
   Dataset, 
   SearchDatasetResponse,
-} from 'types' 
+  StatusResponse,
+} from '../types' 
+
+export function status() {
+  return ApiCkan
+    .get<StatusResponse>( `status_show` )
+    .then(({ data }) => data.success )
+}
 
 
 export function listDatasets() {
@@ -19,10 +26,38 @@ export function getDataset(id: string | string[]): Promise<Dataset> {
     .then(({ data }) => data.result)
 } 
 
-export async function searchDataset(q: string | string [] ) {
-  if (q !== '') return ApiCkan
-    .get<SearchDatasetResponse>(`package_search?q=${q}`)
-    .then( data => data.data.result);
+
+// == SEARCH DATASET: ROUTE STRUCTURE == 
+
+// Example:
+// http://dadosabertos.unifesp.br/api/3/action/package_search?q=unifesp&fq=tags:"legado","docentes"
+
+
+export async function searchDataset( q: string, tags?: string [] ) {
+  if (q !== '') {
+    if (tags && tags.length > 0) {
+      let stringTags = '&fq=tags:'
+
+      switch (tags.length) {
+        case 1: 
+          stringTags = stringTags.concat(`"${tags[0]}"`)  
+        
+        default: 
+          tags.forEach( s => 
+            stringTags = stringTags.concat(',',`"${s}"`) )
+      }
+
+      console.log(`stringTags: ${stringTags}`)
+      return ApiCkan
+        .get<SearchDatasetResponse>(`package_search?q=${q}&fq=tags:${stringTags}`)
+        .then( data => data.data.result);
+
+    } else {
+      return ApiCkan
+      .get<SearchDatasetResponse>(`package_search?q=${q}`)
+      .then( data => data.data.result);
+    }
+  }
 }
 
 

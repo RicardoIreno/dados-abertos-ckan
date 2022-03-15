@@ -118,4 +118,7 @@ export type SearchDatasetResponse = {
   result: DatasetsFound
 }
 
+export type StatusResponse = {
+  success: boolean
+}
 
