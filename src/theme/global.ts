@@ -20,6 +20,8 @@ export default createGlobalStyle`
   body {
     background-color: ${props => props.theme.colors.body};
     color: ${props => props.theme.colors.text};
+    font-family: "'IBM Plex Sans', sans-serif";
+    font-weight: 600;
   }
 
   h1 {

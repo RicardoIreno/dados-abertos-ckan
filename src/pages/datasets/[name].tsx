@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
 import Default from 'components/templates/Default'
-import { TagComponent, Wrapper, DateFormated } from 'components/atoms'
+import { Tag, Wrapper, DateFormated } from 'components/atoms'
 import {getDataset, listDatasets} from 'services/adaptersCkan'
 import { Dataset, Group } from 'types'
 import styled from 'styled-components'
@@ -56,9 +56,9 @@ export default function Show(props: Props) {
 
       <span>
         {props.d.tags.map( t => 
-          <TagComponent 
+          <Tag 
             key={t.id}> {t.display_name} 
-          </TagComponent>
+          </Tag>
         )}
       </span>
 
