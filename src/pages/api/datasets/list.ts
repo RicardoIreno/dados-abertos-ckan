@@ -1,5 +1,5 @@
 import  {NextApiRequest, NextApiResponse} from 'next'
-import { listDatasets } from 'services/adaptersCkan'
+import { listDatasets } from 'services/ApiCkan'
 
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
