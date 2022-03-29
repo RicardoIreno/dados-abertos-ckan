@@ -2,12 +2,12 @@ import DateFormated from './DateFormated'
 import GridWrapper from './GridWrapper'
 import Wrapper from './Wrapper'
 import Tag from './Tag'
-import TagCheck from './TagCheck'
+import TagSelectable from './TagSelectable'
 
 export {
   DateFormated,
   GridWrapper, 
   Wrapper, 
   Tag,
-  TagCheck
+  TagSelectable
 }
