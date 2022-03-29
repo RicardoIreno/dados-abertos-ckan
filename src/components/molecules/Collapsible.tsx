@@ -1,15 +1,15 @@
-import React, {Children, useState } from "react"
+import React, {ChangeEvent, Children, useState } from "react"
 import {FaChevronDown, FaChevronUp} from 'react-icons/fa'
 import styled from 'styled-components'
-import TagCheck, {TagCheckProps} from "components/atoms/TagCheck"
+import TagSelectable from "components/atoms/TagSelectable"
 import {Tag} from 'types'
 import {useQuery, useQueryClient, useMutation} from 'react-query'
 
-const CWrapper = styled.div`
+const Wrapper = styled.div`
   width: 20rem;
   height: 5rem;
 `
-const CHeader = styled.div`
+const Header = styled.div`
   width: 20rem;
   height: 2rem;
   display: flex;
@@ -22,18 +22,14 @@ const CHeader = styled.div`
   border-radius: 20px;
   margin-bottom: .5rem;
 `
-const CSelected = styled.div`
-  display: inline-flex;
-  flex-wrap: wrap;
-`
 
-const CBody = styled.div`
+const Body = styled.div`
   display: inline-flex;
   flex-wrap: wrap;
   padding: 0.25rem;
   
 `
-const CBtn = styled.button`
+const Btn = styled.button`
   background-color: #fff;
   border: none;
 
@@ -51,8 +47,10 @@ const Collapsible = ({ open, children, title, tagArr }: Props ) => {
   const [isOpen, setIsOpen] = useState(open)
   const queryClient = useQueryClient()
   const {data} = useQuery('tags-used')
-  const [tagsSelected, setTagselected] = useState<Tag[]>([])
+  const [tagsSelected, setTagselected] = useState<string[]>([])
   const [allTags, setAllTags] = useState()
+
+  
 
 
   // const arrayChildren = Children.toArray(children);
@@ -61,33 +59,43 @@ const Collapsible = ({ open, children, title, tagArr }: Props ) => {
     setIsOpen((prev) => !prev)
   };
 
+  function select( e:any ){
+    setTagselected([ ...tagsSelected, e.target.event ])
+    console.log(`select disparado | str: ${tagsSelected} `)
+  }
+  
+  
   return (
-    <CWrapper>
-        <CHeader>
+    <Wrapper>
+        <Header>
           <h6>{title}</h6>
-          <CBtn type="button" onClick={handleFilterOpening}>
+          <Btn type="button" onClick={handleFilterOpening}>
             {!isOpen ? ( <FaChevronDown /> ) : (
               <FaChevronUp />)}
-          </CBtn>
-        </CHeader>
+          </Btn>
+        </Header>
 
-      <CBody>
+      <Body>
+
         {tagsSelected.map( t =>
-          <TagCheck key={t.name}>
-              {t.display_name}
-          </TagCheck>  )}
+          <p>t</p>
+        )}
         
         {isOpen && tagArr.map( t =>
 
-          <TagCheck key={t.name}>
-              {t.display_name}
-          </TagCheck>  
-
+          <TagSelectable 
+            key={t.name}
+            ref={t.name}
+            name={t.display_name}
+            value={t.name}
+            id={t.id}
+            onChange={ select }
+          />
         )}
 
 
-      </CBody>
-    </CWrapper>
+      </Body>
+    </Wrapper>
   )
 }
 

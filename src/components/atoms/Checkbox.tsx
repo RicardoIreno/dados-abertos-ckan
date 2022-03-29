@@ -27,6 +27,7 @@ const Label = styled.label<LabelProps>`
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string
+  value: string
 }
 
 const Checkbox = ( {name, ...rest}: Props ) => {
@@ -47,7 +48,13 @@ const Checkbox = ( {name, ...rest}: Props ) => {
 
 
   return(
-    <Label onClick={handleCheckboxChange}><Me checked={checked}/>
+    <Label onClick={handleCheckboxChange}>
+      <Me 
+        name={name} 
+        value={value}
+        checked={checked}
+      />
+
       {name}
     </Label>
   )
