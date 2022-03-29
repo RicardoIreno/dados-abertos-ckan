@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link' 
 import styled from 'styled-components'
-import {Wrapper, TagComponent} from 'components/atoms'
+import {Wrapper, Tag} from 'components/atoms'
 import { Dataset, Group } from 'types'
 
 const MyWrapper = styled(Wrapper)`
@@ -77,7 +77,7 @@ const DatasetCard = ({dataset}: Props) => {
       
       <TagWrapper>
       {dataset.tags.map( t => 
-        <TagComponent key={t.id}> {t.display_name} </TagComponent>)}
+        <Tag key={t.id}> {t.display_name} </Tag>)}
         </TagWrapper>
         
       {dataset.groups.map( g => {

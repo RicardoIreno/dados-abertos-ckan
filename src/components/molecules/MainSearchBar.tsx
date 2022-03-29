@@ -1,4 +1,4 @@
-import { ChangeEventHandler, InputHTMLAttributes } from 'react'
+import { InputHTMLAttributes } from 'react'
 import styled from 'styled-components'
 import {Wrapper} from 'components/atoms/'
 
@@ -21,11 +21,6 @@ const Input = styled.input`
     color: '#c7c7c7';
     font-size: 1.3rem;
 `
-
-// type eventType = React.ChangeEvent<HTMLInputElement>
-// type handleChange = (e: React.ChangeEvent<HTMLInputElement>) => void  
-type handleChange = ChangeEventHandler
-
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   value: string

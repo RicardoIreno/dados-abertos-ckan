@@ -7,7 +7,7 @@ export type Tag = {
   display_name: string
   id: string
   name: string
-}
+} 
 
 export type Group = {
   display_name: string
@@ -99,23 +99,31 @@ export type DatasetsFound = {
 
 
 export type ListResponse = {
+  help: string
   success: boolean
   result: string[]
 }
 
 export type DatasetResponse = {
+  help: string
   success: boolean
   result: Dataset
 }
 
 export type TagResponse = {
+  help: string
   success: boolean
   result: Tag
 }
 
 export type SearchDatasetResponse = {
+  help: string
   success: boolean
   result: DatasetsFound
 }
 
+export type StatusResponse = {
+  help: string
+  success: boolean
+}
 

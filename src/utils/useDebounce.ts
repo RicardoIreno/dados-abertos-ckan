@@ -9,7 +9,7 @@ export default function useDebounce(
   
   function debounceFn(...args: any[]) {
     window.clearTimeout(timeoutRef.current)
-    timeoutRef.current = window.setTimeout( ()=> {
+    timeoutRef.current = window.setTimeout( () => {
       fn( ...args );
     }, delay)
   }

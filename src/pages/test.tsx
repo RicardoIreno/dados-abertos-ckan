@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react'
-import {Dataset, DatasetsFound } from 'types' 
 import { Wrapper } from 'components/atoms'
-import { DatasetCard, MainSearchBar } from 'components/molecules'
+import {TagSelectable} from 'components/atoms'
+import { HeadApp } from 'components/molecules'
+import Collapsible from 'components/molecules/Collapsible'
+import {Search, DatasetsShowcase} from 'components/organisms'
 import Default from 'components/templates/Default'
-import useDebounce from 'utils/useDebounce'
 import styled from 'styled-components'
-import {ApiMy} from 'services'
+import {Tag} from 'types'
 
 const MyWrapper = styled(Wrapper)`
   flex-direction: column;
@@ -13,60 +13,85 @@ const MyWrapper = styled(Wrapper)`
   align-items: center;
 `
 
-
-async function callApiMy( s: string ) {
-  return ApiMy.get<DatasetsFound>(`datasets/search/${s}`)
-  .then( res => res.data )
-  // return axios.get<DatasetsFound>(`http://localhost:3000/api/datasets/search/${s}`)
-  // .then( res => res.data )
-
-}
-
-
-export default function Tests() {
-  const [datasets, setdatasets] = useState<Dataset[]>([])
-  const [countResults, setCountResults] = useState(0)
-  const [term, setTerm] = useState('')
-  const [displayValue, setDisplayValue ] = useState('')
-  const debouncedChange = useDebounce( (str) => setTerm(str), 1000 )
-
-
-  function searchHandler( str: string) {
-    setDisplayValue(str)
-    debouncedChange(str)
-  }
-
-  useEffect( () => {
-    setdatasets([])
-    callApiMy(term).then( d => {
-      setCountResults(d.count)
-      setdatasets(d.results) 
-    })
-   
-  },[term] )
-
+export default function Test() {
   return (
     <>
+      <HeadApp />
+
       <Default>
-
-      <MainSearchBar 
-				value={displayValue}
-				onChange={ e => searchHandler(e.target.value) }
-			>
-  		</MainSearchBar>
-
-      <MyWrapper>
-
-        { !countResults ? <span></span> : 
-          <h3>{countResults} datasets encontrados</h3> }
-
-        { !datasets ? <p>Pesquise por datasets</p> :
-            datasets.map( d => 
-              <DatasetCard key={d.name} dataset={d} /> ) }
-
-      </MyWrapper>
+        <Search />
         
+        <MyWrapper>
+          {/* <DatasetsShowcase /> */}
+
+          <Collapsible open title="Etiquetas" tagArr={TagArr}>
+          </Collapsible>
+          
+        </MyWrapper>
       </Default>
+
     </>
   )
 }
+
+const TagArr: Tag[]  = [
+  {
+     vocabulary_id:'',
+     state:"active",
+     display_name:"2019",
+     id:"a55d719c-cd1d-4169-837c-4e8e40f5ba509",
+     name:"2019"
+  },
+  {
+     vocabulary_id:'',
+     state: "active",
+     display_name:"docentes",
+     id:"670d779e-193e-4713-ba7c-0ff73b930790",
+     name:"docentes"
+  },
+  {
+     vocabulary_id:'',
+     state:"active",
+     display_name:"legado",
+     id:"4e35b378-c5b9-46b9-b22e-54a5ec1e21b1",
+     name:"legado"
+  },
+  {
+     vocabulary_id:'',
+     state:"active",
+     display_name:"sal\u00e1rio",
+     id:"4b6zf64b-2c48-f1f1c-82dd-a3b9de0866bb9",
+     name:"salario"
+  },
+  {
+    vocabulary_id:'',
+    state:"active",
+    display_name:"frutas",
+    id:"a55d719c-cd18-4fg69-837c-4e8e40f5za54",
+    name:"frutas"
+ },
+ {
+    vocabulary_id:'',
+    state: "active",
+    display_name:"professores",
+    id:"670d779e-293e-4713-ba7c-0ff73b931790",
+    name:"professores"
+ },
+ {
+    vocabulary_id:'',
+    state:"active",
+    display_name:"2018",
+    id:"4e35bf78-c5b9-46b9-b22e-54a5ec1e26aa",
+    name:"2018"
+ },
+ {
+    vocabulary_id:'',
+    state:"active",
+    display_name:"teste",
+    id:"4b6ff64b-2c48-4f1c-82dd-a3sdde080bb9",
+    name:"teste"
+ }
+]
+
+
+

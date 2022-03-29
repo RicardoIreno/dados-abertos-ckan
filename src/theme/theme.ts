@@ -39,7 +39,7 @@ const theme = {
   tipography: {
     h1: "'Oswald', sans-serif",
     headings: "'Oswald', sans-serif",
-    text: "'Roboto', serif",
+    text: "'IBM Plex Sans', sans-serif",
     special: "'Oswald', sans-serif",
   },
   breakpoint: {
