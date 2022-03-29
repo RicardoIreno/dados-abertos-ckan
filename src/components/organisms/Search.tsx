@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient, useMutation } from 'react-query'
 import { useEffect, useState } from 'react'
 import { MainSearchBar } from 'components/molecules'
-import { searchDataset } from 'services/adaptersMyApi'
+import { searchDataset } from 'services/ApiMy'
 import useDebounce from 'utils/useDebounce'
 
 
@@ -11,15 +11,14 @@ export default function Search() {
   const [term, setTerm] = useState('')
   const queryClient = useQueryClient()
   const debouncedChange = useDebounce( (str) => setTerm(str), 1000 )
-  const queryDatasets = useQuery('datasets', () => {} )
-
   const mutationDatasets = useMutation( 'datasets', (term: string ) => 
     searchDataset(term).then( d => d ), {
-
-    onSuccess: ( data ) => {
-      queryClient.setQueryData('datasets', data )
-    },
-  })
+      onSuccess: ( data ) => {
+        if (data)
+          queryClient.setQueryData('datasets', data.result )
+      },
+    }
+  )
 
 
   function searchHandler( str: string) {

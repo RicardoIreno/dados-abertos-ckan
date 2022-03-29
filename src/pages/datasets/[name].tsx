@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import Default from 'components/templates/Default'
 import { Tag, Wrapper, DateFormated } from 'components/atoms'
-import {getDataset, listDatasets} from 'services/adaptersCkan'
+import {getDataset, listDatasets} from 'services/ApiCkan'
 import { Dataset, Group } from 'types'
 import styled from 'styled-components'
 import Link from 'next/link'

@@ -13,7 +13,8 @@ function MyApp({ Component, pageProps }) {
       new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: 20 * 1000,
+            staleTime: 60 * 1000,
+            refetchOnWindowFocus: false
           },
         },
       })
