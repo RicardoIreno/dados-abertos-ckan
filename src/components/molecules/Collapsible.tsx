@@ -1,4 +1,4 @@
-import React, {ChangeEvent, Children, useState } from "react"
+import React, { useState } from "react"
 import {FaChevronDown, FaChevronUp} from 'react-icons/fa'
 import styled from 'styled-components'
 import TagSelectable from "components/atoms/TagSelectable"
@@ -27,41 +27,39 @@ const Body = styled.div`
   display: inline-flex;
   flex-wrap: wrap;
   padding: 0.25rem;
-  
 `
 const Btn = styled.button`
   background-color: #fff;
   border: none;
-
-  
 `
 
 type Props = {
   open?: boolean;
-  children?: React.ReactNode
   title: string;
   tagArr?: Tag[]
 }
 
-const Collapsible = ({ open, children, title, tagArr }: Props ) => {
+const Collapsible = ({ open, title, tagArr }: Props ) => {
   const [isOpen, setIsOpen] = useState(open)
   const queryClient = useQueryClient()
   const {data} = useQuery('tags-used')
+
   const [tagsSelected, setTagselected] = useState<string[]>([])
-  const [allTags, setAllTags] = useState()
 
-  
-
-
-  // const arrayChildren = Children.toArray(children);
 
   const handleFilterOpening = () => {
     setIsOpen((prev) => !prev)
   };
 
-  function select( e:any ){
-    setTagselected([ ...tagsSelected, e.target.event ])
-    console.log(`select disparado | str: ${tagsSelected} `)
+  function select(boo: boolean, str: string ) {
+    if (boo) 
+      setTagselected([...tagsSelected, str])
+    
+    else {
+      const newArr = tagsSelected.filter( (s) => s !== str )
+      setTagselected(newArr)
+    }
+    console.log(`arr: ${tagsSelected} `)
   }
   
   
@@ -77,19 +75,19 @@ const Collapsible = ({ open, children, title, tagArr }: Props ) => {
 
       <Body>
 
-        {tagsSelected.map( t =>
-          <p>t</p>
-        )}
-        
+
         {isOpen && tagArr.map( t =>
 
           <TagSelectable 
             key={t.name}
-            ref={t.name}
             name={t.display_name}
-            value={t.name}
             id={t.id}
-            onChange={ select }
+            selected={false}
+            onChange={ (e) => { 
+              select(
+                e.currentTarget.checked, 
+                e.currentTarget.name) 
+              }}
           />
         )}
 
