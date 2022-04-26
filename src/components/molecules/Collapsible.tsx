@@ -36,7 +36,7 @@ const Btn = styled.button`
 type Props = {
   open?: boolean;
   title: string;
-  tagArr?: Tag[]
+  tagArr?: string[]
 }
 
 const Collapsible = ({ open, title, tagArr }: Props ) => {
@@ -78,11 +78,7 @@ const Collapsible = ({ open, title, tagArr }: Props ) => {
 
         {isOpen && tagArr.map( t =>
 
-          <TagSelectable 
-            key={t.name}
-            name={t.display_name}
-            id={t.id}
-            selected={false}
+          <TagSelectable key={t} name={t} id={t} selected={false}
             onChange={ (e) => { 
               select(
                 e.currentTarget.checked, 

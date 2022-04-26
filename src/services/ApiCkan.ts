@@ -5,6 +5,7 @@ import {
   Dataset, 
   SearchDatasetResponse,
   StatusResponse,
+  TagsResponse
 } from '../types' 
 
 const ApiCkan = axios.create( {baseURL: `http://localhost:5000/api/3/action/`} )
@@ -31,11 +32,9 @@ export function getDataset(id: string | string[]): Promise<Dataset> {
 } 
 
 
-// == SEARCH DATASET: ROUTE STRUCTURE == 
 
-// Example:
+// searchDatasetCkan — route structure:
 // package_search?q=unifesp&fq=tags:"legado","docentes"
-
 
 export async function searchDatasetCkan( q: string | string [], tags?: string [] ) {
   if (q !== '') {
@@ -63,9 +62,6 @@ export async function searchDatasetCkan( q: string | string [], tags?: string []
     }
   }
 }
-
-
-
 
 
 export async function getAllDatasets() {
@@ -107,5 +103,15 @@ export function searchDatasetByOrganization(q: string) {
     .then( data => data.data.result);
 }
 
+
+// == TAGS
+
+// 'http://demo.ckan.org/api/3/action/tag_list'
+
+export function getAllTags() {
+  return ApiCkan
+    .get<string[]>( `tag_list` )
+    .then( data => data.data);
+}
 
 

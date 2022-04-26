@@ -15,11 +15,10 @@ const Label = styled.label`
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string
-  id: string
   selected: boolean
 }
 
-const TagSelectable = ({ name, id, selected, ...rest }: Props) => {
+const TagSelectable = ({ name, selected, ...rest }: Props) => {
   const [isSelected, setIsSelected] = useState(selected)
 
   useEffect( () => {
@@ -29,7 +28,7 @@ const TagSelectable = ({ name, id, selected, ...rest }: Props) => {
   return (
     <>
       <Label>  
-        <input type="checkbox" id={id} name={name} {...rest} />
+        <input type="checkbox" id={name} name={name} {...rest} />
         {name}
       </Label>
     </>

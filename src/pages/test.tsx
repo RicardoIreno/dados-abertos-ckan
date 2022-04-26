@@ -6,6 +6,7 @@ import {Search, DatasetsShowcase} from 'components/organisms'
 import Default from 'components/templates/Default'
 import styled from 'styled-components'
 import {Tag} from 'types'
+import {getAllTags} from 'services/ApiCkan'
 
 const MyWrapper = styled(Wrapper)`
   flex-direction: column;
@@ -13,7 +14,20 @@ const MyWrapper = styled(Wrapper)`
   align-items: center;
 `
 
-export default function Test() {
+type Props = {
+   tags: string[]
+}
+
+export async function getServerSideProps() {
+   return {
+     props: {
+        tags: await getAllTags()
+     },
+   }
+ }
+ 
+
+export default function Test( props: Props ) {
   return (
     <>
       <HeadApp />
@@ -24,8 +38,8 @@ export default function Test() {
         <MyWrapper>
           {/* <DatasetsShowcase /> */}
 
-          <Collapsible open title="Etiquetas" tagArr={TagArr}>
-          </Collapsible>
+          <Collapsible open title="Etiquetas" tagArr={props.tags} />
+          
           
         </MyWrapper>
       </Default>
