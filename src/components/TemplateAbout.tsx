@@ -1,9 +1,11 @@
 import React, {  ReactNode } from 'react'
-import Default from './Default'
+import {
+	AtomWrapper,
+	TemplateDefault
+} from 'components'
 import styled from 'styled-components'
-import {Wrapper} from 'components/atoms/'
 
-const MyWrapper = styled(Wrapper)`
+const MyWrapper = styled(AtomWrapper)`
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
@@ -17,10 +19,10 @@ type Props = {
 }
 
 
-export default function About({children}: Props )  {
+export default function TemplateAbout({children}: Props )  {
 	return (
 
-		<Default>
+		<TemplateDefault>
 
 			<MyWrapper>
 
@@ -28,7 +30,7 @@ export default function About({children}: Props )  {
 
 			</MyWrapper>
 
-		</Default>
+		</TemplateDefault>
 	)
 }
 

@@ -116,10 +116,10 @@ export type TagResponse = {
   result: Tag
 }
 
-export type TagsResponse = {
+export type GetAllTagsResponse = {
   help: string
   success: boolean
-  result: Tag[]
+  result: string[]
 }
 
 export type SearchDatasetResponse = {

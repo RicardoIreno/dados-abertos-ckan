@@ -16,9 +16,7 @@ const MyWrapper = styled.footer`
   color: #fff;
 `
 
-
-
-const SiteFooter = () => {
+export default function OrgSiteFooter() {
 	return (
 
 		<MyWrapper>
@@ -32,4 +30,3 @@ const SiteFooter = () => {
 	)
 }
 
-export default SiteFooter

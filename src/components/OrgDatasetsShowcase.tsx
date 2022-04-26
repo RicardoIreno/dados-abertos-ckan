@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react'
 import {useQuery, useQueryClient, useMutation} from 'react-query'
-import { Wrapper } from 'components/atoms'
-import { DatasetCard } from 'components/molecules'
+import { AtomWrapper, MolDatasetCard } from './'
 import { DatasetsFound } from 'types' 
 import styled from 'styled-components'
 
-const MyWrapper = styled(Wrapper)`
+const MyWrapper = styled(AtomWrapper)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `
 
 
-export default function DatasetsShowcase () {
+export default function OrgDatasetsShowcase () {
   const queryClient = useQueryClient()
   const [datasetsFound, setDatasetsFound] = useState<DatasetsFound>( null )
   const {data} = useQuery('datasets')
@@ -35,7 +34,7 @@ export default function DatasetsShowcase () {
 
     { datasetsFound == null ? <p>Pesquise por datasets</p> :
         datasetsFound.results.map( d => 
-          <DatasetCard key={d.name} dataset={d} /> ) }
+          <MolDatasetCard key={d.name} dataset={d} /> ) }
 
     </MyWrapper>
   )

@@ -20,7 +20,7 @@ const Nav = styled.nav`
 
 
 
-const MenuHeader = () => {
+const MolMenuHeader = () => {
 	return (
 
 		<MyWrapper>
@@ -37,4 +37,4 @@ const MenuHeader = () => {
 	)
 }
 
-export default MenuHeader
+export default MolMenuHeader

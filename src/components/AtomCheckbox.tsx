@@ -30,7 +30,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   value: string
 }
 
-const Checkbox = ( {name, ...rest}: Props ) => {
+const AtomCheckbox = ( {name, ...rest}: Props ) => {
   const [checked, setChecked] = useState(false);
   const [value, setValue] = useState(name)
    
@@ -61,4 +61,4 @@ const Checkbox = ( {name, ...rest}: Props ) => {
 }
 
 
-export default Checkbox
+export default AtomCheckbox

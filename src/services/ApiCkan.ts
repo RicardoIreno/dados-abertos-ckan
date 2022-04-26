@@ -5,7 +5,7 @@ import {
   Dataset, 
   SearchDatasetResponse,
   StatusResponse,
-  TagsResponse
+  GetAllTagsResponse
 } from '../types' 
 
 const ApiCkan = axios.create( {baseURL: `http://localhost:5000/api/3/action/`} )
@@ -110,8 +110,8 @@ export function searchDatasetByOrganization(q: string) {
 
 export function getAllTags() {
   return ApiCkan
-    .get<string[]>( `tag_list` )
-    .then( data => data.data);
+    .get<GetAllTagsResponse>( `tag_list` )
+    .then( data => data.data );
 }
 
 

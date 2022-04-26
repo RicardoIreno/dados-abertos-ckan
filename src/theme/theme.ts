@@ -21,7 +21,7 @@ const theme = {
     heading1: '#474747',
     headings: '#474747',
     menus: '#6b6b6b',
-    DatasetCardTitle: '#000',
+    MolDatasetCardTitle: '#000',
     headerbg: '#fff',
 
   },
@@ -33,7 +33,7 @@ const theme = {
     sitetitle: '1.4',
     special:'1.1rem',
     hmbottom: '1.2rem' ,
-    DatasetCardTitle: '1.5rem',
+    MolDatasetCardTitle: '1.5rem',
 
   },
   tipography: {

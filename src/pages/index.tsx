@@ -1,11 +1,14 @@
-import { Wrapper } from 'components/atoms'
-import { HeadApp } from 'components/molecules'
-import {Search, DatasetsShowcase} from 'components/organisms'
-import Default from 'components/templates/Default'
+import { 
+  AtomWrapper, 
+  MolHeadApp,
+  OrgSearch,
+  OrgDatasetsShowcase,
+  TemplateDefault
+} from 'components'
 import styled from 'styled-components'
 
 
-const MyWrapper = styled(Wrapper)`
+const MyWrapper = styled(AtomWrapper)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -14,16 +17,16 @@ const MyWrapper = styled(Wrapper)`
 export default function Home() {
   return (
     <>
-      <HeadApp />
+      <MolHeadApp />
 
-      <Default>
-        <Search />
+      <TemplateDefault>
+        <OrgSearch />
 
         <MyWrapper>
-          <DatasetsShowcase />
+          <OrgDatasetsShowcase />
           
         </MyWrapper>
-      </Default>
+      </TemplateDefault>
 
     </>
   )

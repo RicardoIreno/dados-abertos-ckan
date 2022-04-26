@@ -9,10 +9,10 @@ import styled from 'styled-components'
 //   bg?: string
 // }
 
-const Wrapper = styled.div`
+const AtomWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   margin: 0;
 `
-export default Wrapper
+export default AtomWrapper

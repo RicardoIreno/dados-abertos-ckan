@@ -1,12 +1,12 @@
 import { useQuery, useQueryClient, useMutation } from 'react-query'
 import { useEffect, useState } from 'react'
-import { MainSearchBar } from 'components/molecules'
+import { MolMainSearchBar } from 'components'
 import { searchDataset } from 'services/ApiMy'
 import useDebounce from 'utils/useDebounce'
 
 
 
-export default function Search() {
+export default function OrgSearch() {
   const [displayValue, setDisplayValue ] = useState('')
   const [term, setTerm] = useState('')
   const queryClient = useQueryClient()
@@ -33,11 +33,11 @@ export default function Search() {
 
   return (
     <>
-      <MainSearchBar 
+      <MolMainSearchBar 
 				value={displayValue}
 				onChange={ e => searchHandler(e.target.value) }
 			>
-  		</MainSearchBar>
+  		</MolMainSearchBar>
     </>
   )
 }

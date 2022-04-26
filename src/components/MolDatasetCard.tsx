@@ -1,10 +1,10 @@
 import React from 'react'
 import Link from 'next/link' 
 import styled from 'styled-components'
-import {Wrapper, Tag} from 'components/atoms'
+import {AtomWrapper, AtomTag} from './'
 import { Dataset, Group } from 'types'
 
-const MyWrapper = styled(Wrapper)`
+const MyWrapper = styled(AtomWrapper)`
   max-width: 800px;
   min-height: 200px;
   margin: 1rem 1rem 0.3rem 1rem;
@@ -17,7 +17,7 @@ const MyWrapper = styled(Wrapper)`
 const Title = styled.span`
   font-size: 1.5rem;
   font-family: ${props => props.theme.tipography.special};
-  color: ${props => props.theme.colors.DatasetCardTitle};
+  color: ${props => props.theme.colors.MolDatasetCardTitle};
   margin-bottom: 1rem
 `
 
@@ -58,7 +58,7 @@ function Groups(g: Group[]) {
   }
 }
 
-const DatasetCard = ({dataset}: Props) => {
+const MolDatasetCard = ({dataset}: Props) => {
   return(
     <MyWrapper>
 
@@ -77,7 +77,7 @@ const DatasetCard = ({dataset}: Props) => {
       
       <TagWrapper>
       {dataset.tags.map( t => 
-        <Tag key={t.id}> {t.display_name} </Tag>)}
+        <AtomTag key={t.id}> {t.display_name} </AtomTag>)}
         </TagWrapper>
         
       {dataset.groups.map( g => {
@@ -87,6 +87,6 @@ const DatasetCard = ({dataset}: Props) => {
   )
 }
 
-export default DatasetCard
+export default MolDatasetCard
 
 

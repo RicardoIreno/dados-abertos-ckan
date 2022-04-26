@@ -18,7 +18,7 @@ const Wrapper = styled.span`
 `
 
 
-const Tag = ({children}: Props) => {
+const AtomTag = ({children}: Props) => {
 
   return (
     <Wrapper>
@@ -28,4 +28,4 @@ const Tag = ({children}: Props) => {
   )
 }
 
-export default Tag
+export default AtomTag

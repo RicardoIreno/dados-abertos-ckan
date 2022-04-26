@@ -18,7 +18,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   selected: boolean
 }
 
-const TagSelectable = ({ name, selected, ...rest }: Props) => {
+const AtomTagSelectable = ({ name, selected, ...rest }: Props) => {
   const [isSelected, setIsSelected] = useState(selected)
 
   useEffect( () => {
@@ -35,4 +35,4 @@ const TagSelectable = ({ name, selected, ...rest }: Props) => {
   );
 };
 
-export default TagSelectable;
+export default AtomTagSelectable;

@@ -1,12 +1,12 @@
 import { InputHTMLAttributes } from 'react'
 import styled from 'styled-components'
-import {Wrapper} from 'components/atoms/'
+import {AtomWrapper} from 'components'
 
 
 
 const radios = '20px'
 
-const MyWrapper = styled(Wrapper)`
+const MyWrapper = styled(AtomWrapper)`
   align-items: center;
   `
 const Input = styled.input`
@@ -27,13 +27,13 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 
-const MainSearchBar = ( {value, ...rest}: Props) => {
+const MolMainSearchBar = ( {value, ...rest}: Props) => {
   return (
 
     <MyWrapper>
       <Input 
         type="search" 
-        id="MainSearchBar"  
+        id="MolMainSearchBar"  
         value={value} 
         {...rest}
       >
@@ -44,4 +44,4 @@ const MainSearchBar = ( {value, ...rest}: Props) => {
 }
 
 
-export default MainSearchBar
+export default MolMainSearchBar

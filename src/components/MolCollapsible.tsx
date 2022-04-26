@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 import {FaChevronDown, FaChevronUp} from 'react-icons/fa'
 import styled from 'styled-components'
-import TagSelectable from "components/atoms/TagSelectable"
-import {Tag} from 'types'
+import AtomTagSelectable from "./AtomTagSelectable"
 import {useQuery, useQueryClient, useMutation} from 'react-query'
 
 const Wrapper = styled.div`
@@ -39,7 +38,7 @@ type Props = {
   tagArr?: string[]
 }
 
-const Collapsible = ({ open, title, tagArr }: Props ) => {
+const MolCollapsible = ({ open, title, tagArr }: Props ) => {
   const [isOpen, setIsOpen] = useState(open)
   const queryClient = useQueryClient()
   const {data} = useQuery('tags-used')
@@ -74,11 +73,8 @@ const Collapsible = ({ open, title, tagArr }: Props ) => {
         </Header>
 
       <Body>
-
-
         {isOpen && tagArr.map( t =>
-
-          <TagSelectable key={t} name={t} id={t} selected={false}
+          <AtomTagSelectable key={t} name={t} id={t} selected={false}
             onChange={ (e) => { 
               select(
                 e.currentTarget.checked, 
@@ -93,6 +89,6 @@ const Collapsible = ({ open, title, tagArr }: Props ) => {
   )
 }
 
-export default Collapsible;
+export default MolCollapsible;
 
 

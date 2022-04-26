@@ -1,14 +1,17 @@
-import { Wrapper } from 'components/atoms'
-import {TagSelectable} from 'components/atoms'
-import { HeadApp } from 'components/molecules'
-import Collapsible from 'components/molecules/Collapsible'
-import {Search, DatasetsShowcase} from 'components/organisms'
-import Default from 'components/templates/Default'
+import { 
+   AtomWrapper,
+   MolHeadApp,
+   MolCollapsible,
+   OrgSearch,
+   OrgDatasetsShowcase,
+   TemplateDefault
+ } from 'components'
+
 import styled from 'styled-components'
-import {Tag} from 'types'
+import {GetAllTagsResponse} from 'types'
 import {getAllTags} from 'services/ApiCkan'
 
-const MyWrapper = styled(Wrapper)`
+const MyWrapper = styled(AtomWrapper)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -19,9 +22,12 @@ type Props = {
 }
 
 export async function getServerSideProps() {
+   const tags = await getAllTags()
+   console.log(tags.result)
+
    return {
      props: {
-        tags: await getAllTags()
+        tags: tags.result
      },
    }
  }
@@ -30,19 +36,19 @@ export async function getServerSideProps() {
 export default function Test( props: Props ) {
   return (
     <>
-      <HeadApp />
+      <MolHeadApp />
 
-      <Default>
-        <Search />
+      <TemplateDefault>
+        <OrgSearch />
         
         <MyWrapper>
           {/* <DatasetsShowcase /> */}
 
-          <Collapsible open title="Etiquetas" tagArr={props.tags} />
+          <MolCollapsible open title="Etiquetas" tagArr={props.tags} />
           
           
         </MyWrapper>
-      </Default>
+      </TemplateDefault>
 
     </>
   )

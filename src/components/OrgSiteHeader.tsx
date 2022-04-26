@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import {MenuHeader} from 'components/molecules'
+import {MolMenuHeader} from 'components'
 
 const MyWrapper = styled.header`
   top: 0;
@@ -28,7 +28,7 @@ const SiteTitle = styled.span`
   font-size: ${props => props.theme.sizes.special};
 `
 
-const SiteHeader = () => {
+const OrgSiteHeader = () => {
 	return (
 
 		<MyWrapper>
@@ -39,12 +39,12 @@ const SiteHeader = () => {
 				</a>
 			</Link>
 
-			<MenuHeader />
+			<MolMenuHeader />
 			
 		</MyWrapper>
 	)
 }
 
-export default SiteHeader
+export default OrgSiteHeader
 
 
