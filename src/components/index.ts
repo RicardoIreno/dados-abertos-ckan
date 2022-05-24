@@ -1,37 +1,35 @@
-import AtomCheckbox from "./AtomCheckbox";
-import AtomDateFormated from "./AtomDateFormated";
-import AtomTag from "./AtomTag";
-import AtomAtomTagSelectable from "./AtomTagSelectable";
-import AtomWrapper from "./AtomWrapper";
-import MolCollapsible from "./MolCollapsible";
-import MolDatasetCard from "./MolDatasetCard";
-import MolHeadApp from "./MolHeadApp";
-import MolMainSearchBar from "./MolMainSearchBar";
-import MolMenuHeader from "./MolMenuHeader";
-import OrgDatasetsShowcase from "./OrgDatasetsShowcase";
-import OrgSearch from "./OrgSearch";
-import OrgSiteFooter from "./OrgSiteFooter";
-import OrgSiteHeader from "./OrgSiteHeader";
+import Collapsible from "./Collapsible";
+import DatasetCard from "./DatasetCard";
+import DateFormated from "./DateFormated";
+import DatasetsShowcase from "./DatasetsShowcase";
+import SearchBar from "./SearchBar";
+import SearchTerm from "./SearchTerm";
+import SiteHead from "./SiteHead";
+import SiteFooter from "./SiteFooter";
+import SiteHeader from "./SiteHeader";
+import Tag from "./Tag";
+import TagSelectable from "./TagSelectable";
 import TemplateAbout from "./TemplateAbout";
 import TemplateDefault from "./TemplateDefault";
+import SearchOrchestrator from "./SearchOrchestrator";
+import { QueryProvider } from "./QueryProvider";
 
 export {
-  AtomCheckbox,
-  AtomDateFormated,
-  AtomTag,
-  AtomAtomTagSelectable,
-  AtomWrapper,
-  MolCollapsible,
-  MolDatasetCard,
-  MolHeadApp,
-  MolMainSearchBar,
-  MolMenuHeader,
-  OrgSearch,
-  OrgDatasetsShowcase,
-  OrgSiteFooter,
-  OrgSiteHeader,
+  Collapsible,
+  DatasetCard,
+  DatasetsShowcase,
+  DateFormated,
+  SearchBar,
+  SearchTerm,
+  SearchOrchestrator,
+  SiteHead,
+  SiteFooter,
+  SiteHeader,
+  Tag,
+  TagSelectable,
   TemplateAbout,
-  TemplateDefault
+  TemplateDefault,
+  QueryProvider
 }
 
 

@@ -3,20 +3,39 @@ import { SearchDatasetResponse } from 'types'
 
 const ApiMy = axios.create( {baseURL: 'http://localhost:3000/api/'} )
 
-
-export async function searchDataset( s: string, t?: string[] ) {
-
-  // if (t && t.length > 0) {
-  //   let tags = ''
-  //   t.forEach( s => tags = tags.concat(`/${s}`) )
-
-  //   return ApiMy.get<SearchDatasetResponse>(`datasets/search/${s}${tags}`)
-  //   .then( res => res.data )
-    
-  // }
-      
-  if (s !== '') return ApiMy.get<SearchDatasetResponse>(`datasets/search/${s}`)
-    .then( res => res.data )   
+ 
+export async function searchDataset( q: string, t?: string[] ) {
+  
+  if (q !== '') {
+    if (t && t.length > 0) {
+      let stringTags = ''
+      t.forEach ( i => stringTags = stringTags.concat(`/${i}`) )  
+      console.log(`datasets/search/${q}${stringTags}`)
+      return ApiMy.get<SearchDatasetResponse>(`datasets/search/${q}${stringTags}`)
+        .then( res => res.data )
+    }
+    return ApiMy.get<SearchDatasetResponse>(`datasets/search/${q}`)
+      .then( res => res.data )     
+  }
 }
 
-
+export async function searchDatasets( s: string, t?: string[]  ) {
+  let queryData = {
+    term: s,
+    tags: t
+  } 
+  console.log(`searchDatasets(ApyMy) - term: ${queryData.term}, tags: ${queryData.tags}`)
+  
+  let config = {
+    headers: {
+      'Content-Type': 'application/json; charset=UTF-8'
+    },
+    body: JSON.stringify({ queryData })
+  }
+  return ApiMy.post<SearchDatasetResponse>(`datasets/search`,{
+    term: s,
+    tags: t
+  },  config)
+  .then( res => res.data )  
+  
+}

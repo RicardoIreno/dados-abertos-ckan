@@ -2,7 +2,7 @@ type Props = {
   input: Date
 }
 
-export default function AtomDateFormated( {input}: Props ){
+export default function DateFormated( {input}: Props ){
   const newDate = new Date(input).toLocaleDateString('pt-BR', {
     day: '2-digit', 
     month: 'long', 

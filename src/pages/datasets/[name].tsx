@@ -1,16 +1,9 @@
 import { GetStaticProps } from 'next'
-import Default from 'components/templates/Default'
-import { Tag, Wrapper, DateFormated } from 'components/atoms'
+import { Tag, DateFormated, TemplateDefault } from 'components'
 import {getDataset, listDatasets} from 'services/ApiCkan'
 import { Dataset, Group } from 'types'
-import styled from 'styled-components'
-import Link from 'next/link'
 
-const MyWrapper = styled(Wrapper)`
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
+import Link from 'next/link'
 
 type Props = {
   d: Dataset
@@ -45,7 +38,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export default function Show(props: Props) {
 
   return (
-    <Default>
+    <TemplateDefault>
       <h1>{props.d.name}</h1>
       <p>{props.d.notes}</p>
       
@@ -85,6 +78,6 @@ export default function Show(props: Props) {
         )}
       </div>
     
-    </Default>
+    </TemplateDefault>
   )
 }

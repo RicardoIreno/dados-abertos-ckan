@@ -8,8 +8,8 @@ import {
   GetAllTagsResponse
 } from '../types' 
 
-const ApiCkan = axios.create( {baseURL: `http://localhost:5000/api/3/action/`} )
-// const ApiCkan = axios.create( {baseURL: `http://dadosabertos.unifesp.br/api/3/action/`} )
+// const ApiCkan = axios.create( {baseURL: `http://localhost:5000/api/3/action/`} )
+const ApiCkan = axios.create( {baseURL: `http://dadosabertos.unifesp.br/api/3/action/`} )
 
 
 export function status() {
@@ -36,21 +36,17 @@ export function getDataset(id: string | string[]): Promise<Dataset> {
 // searchDatasetCkan — route structure:
 // package_search?q=unifesp&fq=tags:"legado","docentes"
 
-export async function searchDatasetCkan( q: string | string [], tags?: string [] ) {
+export async function searchDatasetCkan( q?: string | string [], tags?: string [] ) {
   if (q !== '') {
     if (tags && tags.length > 0) {
       let stringTags = ''
-
-      switch (tags.length) {
-        case 1: 
-          stringTags = stringTags.concat(`"${tags[0]}"`)  
+      stringTags = stringTags.concat(`"${tags[0]}"`)  
         
-        default: 
-          tags.forEach( s => 
-            stringTags = stringTags.concat(',',`"${s}"`) )
+      for (let i = 1; i < tags.length; i++ ) {
+        stringTags = stringTags.concat(',',`"${tags[i]}"`) 
       }
-
-      // console.log(`stringTags: ${stringTags}`)
+      
+      console.log(`package_search?q=${q}&fq=tags:${stringTags}`)
       return ApiCkan
         .get<SearchDatasetResponse>(`package_search?q=${q}&fq=tags:${stringTags}`)
         .then( data => data.data);
