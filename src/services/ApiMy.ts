@@ -10,7 +10,7 @@ export async function searchDataset( q: string, t?: string[] ) {
     if (t && t.length > 0) {
       let stringTags = ''
       t.forEach ( i => stringTags = stringTags.concat(`/${i}`) )  
-      console.log(`datasets/search/${q}${stringTags}`)
+      
       return ApiMy.get<SearchDatasetResponse>(`datasets/search/${q}${stringTags}`)
         .then( res => res.data )
     }

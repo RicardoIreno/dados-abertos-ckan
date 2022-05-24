@@ -12,8 +12,6 @@ export default function SearchTerm() {
   useEffect( () => {
     if (term === '') queryClient.resetQueries('datasets')
     queryClient.setQueryData('term', term )
-    console.log(`useEffect do SearchTerm - term: ${term}`)
-  
   },[term] )
 
   function changeHandler( str: string) {

@@ -8,8 +8,7 @@ type BodyRequest = {
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const body: BodyRequest = req.body
-  console.log(`API - Term: ${body.term}, Tags: ${body.tags}`)
-  return res.json( await searchDatasetCkan(body.term, body.tags) )
+  if ( body.term || body.tags )
+    return res.json( await searchDatasetCkan(body.term, body.tags) )
 } 
-// return res.json( await searchDatasetCkan(term, tags) ))
-//await searchDatasetCkan(term, tags)
+// console.log(`API - Term: ${body.term}, Tags: ${body.tags}`)
