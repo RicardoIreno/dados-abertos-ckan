@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-export default function HeadApp() {
+export default function SiteHead() {
   return(
     <Head>
       <title>Testes CKAN</title>

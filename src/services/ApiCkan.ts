@@ -5,10 +5,11 @@ import {
   Dataset, 
   SearchDatasetResponse,
   StatusResponse,
+  GetAllTagsResponse
 } from '../types' 
 
-const ApiCkan = axios.create( {baseURL: `http://localhost:5000/api/3/action/`} )
-// const ApiCkan = axios.create( {baseURL: `http://dadosabertos.unifesp.br/api/3/action/`} )
+//  const ApiCkan = axios.create( {baseURL: `http://localhost:5000/api/3/action/`} )
+const ApiCkan = axios.create( {baseURL: `http://dadosabertos.unifesp.br/api/3/action/`} )
 
 
 export function status() {
@@ -31,41 +32,37 @@ export function getDataset(id: string | string[]): Promise<Dataset> {
 } 
 
 
-// == SEARCH DATASET: ROUTE STRUCTURE == 
 
-// Example:
+// searchDatasetCkan — route structure:
 // package_search?q=unifesp&fq=tags:"legado","docentes"
 
-
-export async function searchDatasetCkan( q: string | string [], tags?: string [] ) {
-  if (q !== '') {
-    if (tags && tags.length > 0) {
-      let stringTags = ''
-
-      switch (tags.length) {
-        case 1: 
-          stringTags = stringTags.concat(`"${tags[0]}"`)  
-        
-        default: 
-          tags.forEach( s => 
-            stringTags = stringTags.concat(',',`"${s}"`) )
-      }
-
-      // console.log(`stringTags: ${stringTags}`)
-      return ApiCkan
-        .get<SearchDatasetResponse>(`package_search?q=${q}&fq=tags:${stringTags}`)
-        .then( data => data.data);
-
-    } else {
-        return ApiCkan
-          .get<SearchDatasetResponse>(`package_search?q=${q}`)
-          .then( data => data.data);
+export async function searchDatasetCkan( q?: string | string [], tags?: string [] ) {
+  
+  if (tags && tags.length > 0) {
+    let stringTags = ''
+    stringTags = stringTags.concat(`"${tags[0]}"`)  
+      
+    for (let i = 1; i < tags.length; i++ ) {
+      stringTags = stringTags.concat(',',`"${tags[i]}"`) 
     }
+    console.log(`package_search?q=${q}&fq=tags:${encodeURIComponent(stringTags)}`)
+
+    if (q == '') {
+      return ApiCkan
+      .get<SearchDatasetResponse>(`package_search?fq=tags:${encodeURIComponent(stringTags)}`)
+      .then( data => data.data);
+    }
+    else {
+      return ApiCkan
+        .get<SearchDatasetResponse>(`package_search?q=${q[0]}&fq=tags:${encodeURIComponent(stringTags)}`)
+        .then( data => data.data);
+    }
+  } else {
+      return ApiCkan
+        .get<SearchDatasetResponse>(`package_search?q=${q[0]}`)
+        .then( data => data.data);
   }
 }
-
-
-
 
 
 export async function getAllDatasets() {
@@ -107,5 +104,15 @@ export function searchDatasetByOrganization(q: string) {
     .then( data => data.data.result);
 }
 
+
+// == TAGS
+
+// 'http://demo.ckan.org/api/3/action/tag_list'
+
+export function getAllTags() {
+  return ApiCkan
+    .get<GetAllTagsResponse>( `tag_list` )
+    .then( data => data.data );
+}
 
 

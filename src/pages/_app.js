@@ -1,37 +1,17 @@
-import { ThemeProvider } from 'styled-components'
-import { useState } from 'react'
-import GlobalStyle from '../theme/global'
-import {theme} from '../theme'
-import {Hydrate, QueryClientProvider} from 'react-query'
+import { QueryProvider } from 'components'
+import {Hydrate } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import { QueryClient } from 'react-query'
-// import queryClient from '../query'
+import {globalStyles} from 'styles/stitches.config'
 
-function MyApp({ Component, pageProps }) {
-  const [queryClient] = useState(
-    () => 
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            staleTime: 60 * 1000,
-            refetchOnWindowFocus: false
-          },
-        },
-      })
-  )
-
+export default function MyApp({ Component, pageProps }) {
   return(
-    <QueryClientProvider client={queryClient}>
-    <Hydrate state={pageProps.dehydratedState}>
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-        <GlobalStyle />
-      </ThemeProvider>
-    </Hydrate>
-    <ReactQueryDevtools />
-  </QueryClientProvider>
+    <div className={globalStyles()}>
+      <QueryProvider>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Component {...pageProps} />
+        </Hydrate>
+        <ReactQueryDevtools />
+      </QueryProvider>
+    </div>
   )
-  
 }
-
-export default MyApp

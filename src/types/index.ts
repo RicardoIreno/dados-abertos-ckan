@@ -116,6 +116,12 @@ export type TagResponse = {
   result: Tag
 }
 
+export type GetAllTagsResponse = {
+  help: string
+  success: boolean
+  result: string[]
+}
+
 export type SearchDatasetResponse = {
   help: string
   success: boolean

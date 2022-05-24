@@ -1,29 +1,24 @@
-import { Wrapper } from 'components/atoms'
-import { HeadApp } from 'components/molecules'
-import {Search, DatasetsShowcase} from 'components/organisms'
-import Default from 'components/templates/Default'
-import styled from 'styled-components'
+import { 
+  SiteHead,
+  SearchTerm,
+  DatasetsShowcase,
+  TemplateDefault
+} from 'components'
 
-
-const MyWrapper = styled(Wrapper)`
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
 
 export default function Home() {
   return (
     <>
-      <HeadApp />
+      <SiteHead />
 
-      <Default>
-        <Search />
+      <TemplateDefault>
+        <SearchTerm />
 
-        <MyWrapper>
+        <div>
           <DatasetsShowcase />
           
-        </MyWrapper>
-      </Default>
+        </div>
+      </TemplateDefault>
 
     </>
   )
