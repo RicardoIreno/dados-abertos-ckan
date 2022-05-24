@@ -8,7 +8,7 @@ import {
   GetAllTagsResponse
 } from '../types' 
 
-// const ApiCkan = axios.create( {baseURL: `http://localhost:5000/api/3/action/`} )
+//  const ApiCkan = axios.create( {baseURL: `http://localhost:5000/api/3/action/`} )
 const ApiCkan = axios.create( {baseURL: `http://dadosabertos.unifesp.br/api/3/action/`} )
 
 
@@ -48,12 +48,12 @@ export async function searchDatasetCkan( q?: string | string [], tags?: string [
       
       console.log(`package_search?q=${q}&fq=tags:${stringTags}`)
       return ApiCkan
-        .get<SearchDatasetResponse>(`package_search?q=${q}&fq=tags:${stringTags}`)
+        .get<SearchDatasetResponse>(`package_search?q=${encodeURIComponent(q[0])}&fq=tags:${stringTags}`)
         .then( data => data.data);
 
     } else {
         return ApiCkan
-          .get<SearchDatasetResponse>(`package_search?q=${q}`)
+          .get<SearchDatasetResponse>(`package_search?q=${encodeURIComponent(q[0])}`)
           .then( data => data.data);
     }
   }
