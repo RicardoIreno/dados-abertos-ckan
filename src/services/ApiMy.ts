@@ -19,23 +19,24 @@ export async function searchDataset( q: string, t?: string[] ) {
   }
 }
 
-export async function searchDatasets( s: string, t?: string[]  ) {
-  let queryData = {
-    term: s,
-    tags: t
+export async function searchDatasets( s?: string, t?: string[]  ) {
+  if (s || t) {
+    let queryData = {
+      term: s,
+      tags: t
+    } 
+
+    let config = {
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8'
+      },
+      body: JSON.stringify({ queryData })
+    }
+    
+    return ApiMy.post<SearchDatasetResponse>(`datasets/search`,{
+      term: s,
+      tags: t
+    },  config)
+    .then( res => res.data )   
   } 
-  console.log(`searchDatasets(ApyMy) - term: ${queryData.term}, tags: ${queryData.tags}`)
-  
-  let config = {
-    headers: {
-      'Content-Type': 'application/json; charset=UTF-8'
-    },
-    body: JSON.stringify({ queryData })
-  }
-  return ApiMy.post<SearchDatasetResponse>(`datasets/search`,{
-    term: s,
-    tags: t
-  },  config)
-  .then( res => res.data )  
-  
 }

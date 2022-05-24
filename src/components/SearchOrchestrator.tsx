@@ -11,31 +11,12 @@ export default function SearchOrchestrator(p: Props) {
   const queryTerm = useQuery<string>('term', {retry: false})
   const queryTags = useQuery<string[]>('tags', {retry: false})
 
-  // const mutationDatasets = useMutation( (term: string) => 
-  //   searchDatasets(term, queryTags.data).then( d => d ), {
-
-  //     onSuccess: ( data ) => {
-  //       if (data)
-  //         queryClient.setQueryData('datasets', data.result )
-  //     },
-
-  //     onError: (error) => {
-  //       console.log('deu erro', error)  
-  //     }
-  //   }
-  // )
-
   useEffect( () => {
-    console.log("useEffect do Orquestrador disparado")
-    if (queryTerm.data !== '' && queryTags.data !== [] )
+    if (queryTerm.data || queryTags.data  )
       searchDatasets(queryTerm.data, queryTags.data)
         .then( d => queryClient.setQueryData('datasets', d.result )
-        )
-
-    // if (queryTerm.data === '') queryClient.resetQueries('datasets')
-
+      )
   },[queryTerm.data, queryTags.data ] )
-
 
   return (
     <>

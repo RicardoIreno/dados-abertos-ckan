@@ -37,25 +37,30 @@ export function getDataset(id: string | string[]): Promise<Dataset> {
 // package_search?q=unifesp&fq=tags:"legado","docentes"
 
 export async function searchDatasetCkan( q?: string | string [], tags?: string [] ) {
-  if (q !== '') {
-    if (tags && tags.length > 0) {
-      let stringTags = ''
-      stringTags = stringTags.concat(`"${tags[0]}"`)  
-        
-      for (let i = 1; i < tags.length; i++ ) {
-        stringTags = stringTags.concat(',',`"${tags[i]}"`) 
-      }
+  
+  if (tags && tags.length > 0) {
+    let stringTags = ''
+    stringTags = stringTags.concat(`"${tags[0]}"`)  
       
-      console.log(`package_search?q=${q}&fq=tags:${stringTags}`)
-      return ApiCkan
-        .get<SearchDatasetResponse>(`package_search?q=${encodeURIComponent(q[0])}&fq=tags:${stringTags}`)
-        .then( data => data.data);
-
-    } else {
-        return ApiCkan
-          .get<SearchDatasetResponse>(`package_search?q=${encodeURIComponent(q[0])}`)
-          .then( data => data.data);
+    for (let i = 1; i < tags.length; i++ ) {
+      stringTags = stringTags.concat(',',`"${tags[i]}"`) 
     }
+    console.log(`package_search?q=${q}&fq=tags:${encodeURIComponent(stringTags)}`)
+
+    if (q == '') {
+      return ApiCkan
+      .get<SearchDatasetResponse>(`package_search?fq=tags:${encodeURIComponent(stringTags)}`)
+      .then( data => data.data);
+    }
+    else {
+      return ApiCkan
+        .get<SearchDatasetResponse>(`package_search?q=${q[0]}&fq=tags:${encodeURIComponent(stringTags)}`)
+        .then( data => data.data);
+    }
+  } else {
+      return ApiCkan
+        .get<SearchDatasetResponse>(`package_search?q=${q[0]}`)
+        .then( data => data.data);
   }
 }
 

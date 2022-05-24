@@ -45,6 +45,8 @@ export default function DatasetCard({dataset}: Props) {
       {dataset.groups.map( g => {
         <img src={g.image_display_url}/>
       })}
+
+      <a href={`http://dadosabertos.unifesp.br/dataset/${dataset.name}`} target='blank'>Acessar</a>
     </div>
   )
 }
