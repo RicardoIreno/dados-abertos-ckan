@@ -1,29 +1,48 @@
-import { 
-  SiteHead,
+import React, {  ReactNode } from 'react'
+import {getAllTags} from 'services/ApiCkan'
+import {
+	Collapsible,
   SearchTerm,
   DatasetsShowcase,
-  TemplateDefault
+  SearchOrchestrator,
+  TemplateDefault,
 } from 'components'
+import { TemplateSearchPageCSS } from 'styles/TemplateSearchPageCSS'
 
-
-export default function Home() {
-  return (
-    <>
-      <SiteHead />
-
-      <TemplateDefault>
-        <SearchTerm />
-
-        <div>
-          <DatasetsShowcase />
-          
-        </div>
-      </TemplateDefault>
-
-    </>
-  )
+type Props = {
+  children: ReactNode
+  tags: string[]
 }
 
+export async function getServerSideProps() {
+  const tags = await getAllTags()
+  return {
+    props: {
+       tags: tags.result
+    },
+  }
+}
 
+export default function Home(props: Props )  {
+	return (
+		<TemplateDefault>
+      <SearchOrchestrator>  
+        <div className={TemplateSearchPageCSS()}>
+          
+          <SearchTerm />
 
+          <div className='grid'>
+            <div className='left'>
+              <Collapsible open title="Etiquetas" tagArr={props.tags} />
+            </div>
 
+            <div className='right'>
+              <DatasetsShowcase />
+            </div>
+          </div>
+
+        </div>
+      </SearchOrchestrator>
+		</TemplateDefault>
+	)
+}

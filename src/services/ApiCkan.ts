@@ -45,7 +45,6 @@ export async function searchDatasetCkan( q?: string | string [], tags?: string [
     for (let i = 1; i < tags.length; i++ ) {
       stringTags = stringTags.concat(',',`"${tags[i]}"`) 
     }
-    console.log(`package_search?q=${q}&fq=tags:${encodeURIComponent(stringTags)}`)
 
     if (q == '') {
       return ApiCkan
