@@ -1,7 +1,7 @@
 import axios from "axios"
 import { SearchDatasetResponse } from 'types'
 
-const ApiMy = axios.create( {baseURL: 'http://localhost:3000/api/'} )
+const ApiMy = axios.create( {baseURL: 'https://dados-abertos-ckan.vercel.app/api/'} )
 
  
 export async function searchDataset( q: string, t?: string[] ) {
