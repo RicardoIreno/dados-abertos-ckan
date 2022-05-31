@@ -1,11 +1,11 @@
 <div id="top"></div>
 
-<a align="center" href="https://github.com/RicardoIreno/dados-abertos-ckan">
-  <img align="center" src="public/logo_da_horizontal.png" alt="Logo" width="447" height="220">
- </a>
+<p align="center"><a href="https://github.com/RicardoIreno/dados-abertos-ckan">
+  <img src="public/logo_da_horizontal.png" alt="Logo" width="447" height="220">
+ </a></p>
 
-<h3 align="center">Dados Abertos - Ckan</h3>
-<h4 align="center">A frontend that serves infos from CKAN using hte CKAN API.</h4>
+<h1 align="center">Dados Abertos - Ckan</h1>
+<h2 align="center">A frontend that serves infos from CKAN using hte CKAN API.</h2>
 
 <div align="center">
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /><img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" /><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
