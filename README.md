@@ -1,7 +1,7 @@
 <div id="top"></div>
 
-<a href="https://github.com/RicardoIreno/dados-abertos-ckan">
-  <img src="public/logo_da_horizontal.svg" alt="Logo" width="447" height="220">
+<a align="center" href="https://github.com/RicardoIreno/dados-abertos-ckan">
+  <img align="center" src="public/logo_da_horizontal.png" alt="Logo" width="447" height="220">
  </a>
 
 <h3 align="center">Dados Abertos - Ckan</h3>
