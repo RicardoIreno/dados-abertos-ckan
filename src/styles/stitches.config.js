@@ -1,4 +1,5 @@
 import { createStitches, globalCss } from "@stitches/core";
+import {violet, slate} from '@radix-ui/colors'
 
 export const { styled, css } = createStitches({
   media: {
@@ -13,9 +14,13 @@ export const { styled, css } = createStitches({
       bgHeader: ' #ebebeb ',
       component: '#fff',
       theme: '#d4f8ff', 
+      btn: 'ButtonCSS',
+      ...slate,
+      ...violet,
 
     },
     space: {
+      m: '4px',
       1: '6px',
       2: '12px',
       3: '18px',
@@ -49,8 +54,8 @@ export const { styled, css } = createStitches({
       6: '36px',
     },
     fonts: {
-      default: "'IBM Plex Sans', sans-serif",
-      title: "'Oswald', sans-serif",
+      default: "'Lato', sans-serif",
+      title: "'Bebas Neue', cursive",
     },
     fontSizes: {
       sm: '.8rem',

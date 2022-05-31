@@ -17,6 +17,11 @@ export const DatasetCardCSS = css('div', {
   [`& .recurso`]: {
     fontSize: '$3',
   },
+  [`& .tagbox`]: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    maxWidth: '500px',
+  },
 
 })
 

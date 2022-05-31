@@ -2,7 +2,10 @@ import React from 'react'
 import Link from 'next/link' 
 import {Tag} from '.'
 import { Dataset, Group } from 'types'
-import{ DatasetCardCSS } from 'styles'
+import{ 
+  DatasetCardCSS,
+  ButtonCSS,
+ } from 'styles'
 type Props = {
   dataset: Dataset
 }
@@ -36,17 +39,18 @@ export default function DatasetCard({dataset}: Props) {
 
       <p className="recurso">{dataset.num_resources} 
           { dataset.num_resources == 1 ? ' recurso' : ' recursos' }</p>
-      <div>
 
-      {dataset.tags.map( t => 
+      <div className='tagbox'>
+        {dataset.tags.map( t => 
         <Tag key={t.id}> {t.display_name} </Tag>)}
-        </div>
+      </div> 
+      
         
       {dataset.groups.map( g => {
         <img src={g.image_display_url}/>
       })}
 
-      <a href={`http://dadosabertos.unifesp.br/dataset/${dataset.name}`} target='blank'>Acessar</a>
+      <a className={ButtonCSS()} href={`http://dadosabertos.unifesp.br/dataset/${dataset.name}`} target='blank'>Acessar</a>
     </div>
   )
 }

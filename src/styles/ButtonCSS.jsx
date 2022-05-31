@@ -1,8 +1,7 @@
-import { styled } from "./stitches.config";
-import { css } from "@stitches/core";
+import { css } from "./stitches.config";
 
 export const ButtonCSS = css({
-  backgroundColor: "$baseGray",
+  backgroundColor: "$theme",
   borderRadius: "$round",
   fontSize: "$3",
   paddingX: "$2",
