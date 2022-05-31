@@ -1,7 +1,7 @@
 <div id="top"></div>
 
 <a href="https://github.com/RicardoIreno/dados-abertos-ckan">
-  <img src="logo_da_horizontal.svg" alt="Logo" width="447" height="220">
+  <img src="public/logo_da_horizontal.svg" alt="Logo" width="447" height="220">
  </a>
 
 <h3 align="center">Dados Abertos - Ckan</h3>
@@ -25,10 +25,11 @@ In stand by
 
 ## Contact
 
-Ricardo Ireno 
 [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/ricardoireno/)](https://www.linkedin.com/in/ricardoireno/)
 [![Behance Badge](https://img.shields.io/badge/-Behance-blue?style=flat-square&logo=Behance&logoColor=white&link=https://www.behance.net/ricardoireno)](https://www.behance.net/ricardoireno)
 [![E-Mail](https://img.shields.io/badge/Microsoft_Outlook-0078D4?style=flat-square&logo=microsoft-outlook&logoColor=white)](mailto:ricardoireno@outlook.com)  
+
+Ricardo Ireno  
 
 
 Project Link: [https://github.com/RicardoIreno/dados-abertos-ckan](https://github.com/RicardoIreno/dados-abertos-ckan)
