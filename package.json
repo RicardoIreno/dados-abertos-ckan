@@ -9,6 +9,7 @@
     "test": "jest --detectOpenHandles --watch"
   },
   "dependencies": {
+    "@radix-ui/colors": "^0.1.8",
     "@stitches/core": "^1.2.8",
     "axios": "^0.24.0",
     "jest-extended": "^1.2.0",

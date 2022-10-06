@@ -11,7 +11,6 @@ import {
 //  const ApiCkan = axios.create( {baseURL: `http://localhost:5000/api/3/action/`} )
 const ApiCkan = axios.create( {baseURL: `http://dadosabertos.unifesp.br/api/3/action/`} )
 
-
 export function status() {
   return ApiCkan
     .get<StatusResponse>( `status_show` )
