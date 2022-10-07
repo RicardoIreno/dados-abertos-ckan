@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react"
+import { ReactNode } from "react"
 import { css } from "../styles/stitches.config"
 
 type Props = {
