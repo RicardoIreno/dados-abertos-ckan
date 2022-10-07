@@ -9,11 +9,12 @@ export const { styled, css } = createStitches({
 	},
 	theme: {
 		colors: {
-			bg: "#f8f5f4",
+			bg: "#f2f2f2",
 			bgCard: "#fff",
 			bgHeader: " #ebebeb ",
 			component: "#fff",
-			theme: "#d4f8ff",
+			theme: "#ddd",
+			red: "#E38A90",
 			btn: "ButtonCSS",
 			...slate,
 			...violet,

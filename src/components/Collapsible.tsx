@@ -83,7 +83,8 @@ const CollapsibleCSS = css("div", {
 		bRadiusTop: "$3",
 	},
 	[`& .body`]: {
-		display: "inline-flex",
+		display: "flex",
+		justifyContent: "center",
 		flexWrap: "wrap",
 		padding: "$3 $1 $1 $1",
 	},
