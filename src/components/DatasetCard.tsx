@@ -78,7 +78,7 @@ const DatasetCardCSS = css("div", {
 	backgroundColor: "$bgCard",
 	borderRadius: "$3",
 	padding: "$2",
-	marginY: "$2",
+	marginBottom: "$2",
 
 	"@bp1": {
 		paddingX: "$3",
@@ -90,16 +90,18 @@ const DatasetCardCSS = css("div", {
 	[`& .recurso`]: {
 		fontSize: "$3",
 		fontFamily: "$title",
+		color: "$subtitles",
 	},
 	[`& .tagbox`]: {
 		display: "flex",
 		flexWrap: "wrap",
-		maxWidth: "500px",
 	},
 })
 
 const Title = css({
 	fontSize: "$4",
+	color: "$titles",
+	letterSpacing: ".08rem",
 })
 
 const BtnPlace = css("div", {

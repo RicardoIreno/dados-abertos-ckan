@@ -35,5 +35,6 @@ export default function DatasetsShowcase() {
 }
 
 const Container = css("div", {
-	padding: "$3",
+	paddingBlock: "$2",
+	marginLeft: "$1",
 })

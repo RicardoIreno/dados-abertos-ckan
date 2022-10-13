@@ -11,7 +11,7 @@ export default function TagSelectable({ name, selected, ...rest }: Props) {
 
 	useEffect(() => {
 		setIsSelected(true)
-	}, [selected])
+	}, [isSelected])
 
 	return (
 		<span className={TagSelectableCSS()}>
@@ -27,9 +27,9 @@ const TagSelectableCSS = css("div", {
 	margin: "8px 6px",
 
 	label: {
-		backgroundColor: "$theme",
+		backgroundColor: "$tagShadow",
 		borderRadius: "$2",
-		boxShadow: "0 2px 5px 1px rgba(64, 60, 67, 0.16)",
+		boxShadow: "0 2px 0 1px rgba(0,0,0,0.08)",
 		fontFamily: "'IBM Plex Sans', sans-serif",
 		padding: ".25rem .50rem",
 		cursor: "pointer",
@@ -40,13 +40,21 @@ const TagSelectableCSS = css("div", {
 		display: "none",
 	},
 
-	".label:hover": {
-		backgroundColor: "$red",
+	"& .label:hover": {
+		backgroundColor: "$tag",
 	},
 
-	".label:has(input:checked)": {
-		backgroundColor: "$red",
+	"& .label:has(input:checked)": {
+		backgroundColor: "$subtitles",
 	},
+
+	// variants: {
+	// 	color: {
+	// 		selected: {
+	// 			backgroundColor: "$tag",
+	// 		},
+	// 	},
+	// },
 
 	// [`& .header`]: {
 	// 	backgroundColor: "$component",

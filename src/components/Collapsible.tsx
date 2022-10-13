@@ -64,11 +64,13 @@ const CollapsibleCSS = css("div", {
 	width: "20rem",
 	boxShadow: "0 2px 5px 1px rgba(64, 60, 67, 0.16)",
 	borderRadius: "$3",
-	marginBottom: "$1",
+	marginBlock: "$2",
 
 	["& .title"]: {
+		fontFamily: "$default",
+		color: "#67A869",
 		fontSize: "1.1rem",
-		letterSpacing: ".2rem",
+		// letterSpacing: ".2rem",
 	},
 
 	[`& .header`]: {

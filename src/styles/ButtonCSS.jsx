@@ -3,7 +3,7 @@ import { css } from "./stitches.config"
 export const ButtonCSS = css({
 	backgroundColor: "$theme",
 	borderRadius: "$round",
-	fontSize: "$3",
+	fontSize: "$2",
 	paddingX: "$2",
 	margin: "$3",
 

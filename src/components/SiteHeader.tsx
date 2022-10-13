@@ -1,24 +1,17 @@
 import React from "react"
 import Link from "next/link"
 import { css } from "../styles/stitches.config"
+import Logo from "/public/logo_da.svg"
+import Image from "next/image"
 
 export default function SiteHeader() {
 	return (
 		<div className={Container()}>
 			<Link href={"/"}>
 				<h1>
-					<a className="title">Dados Abertos ❏</a>
+					<Image src={Logo} layout="intrinsic" />
 				</h1>
 			</Link>
-
-			{/* <nav className={Nav()}>
-				<Link href="/">
-					<a>Home</a>
-				</Link>
-				<Link href="/test">
-					<a>Testes</a>
-				</Link>
-			</nav> */}
 		</div>
 	)
 }
@@ -34,7 +27,7 @@ const Container = css({
 	backgroundColor: "$bg",
 	boxShadow: "0px -6px 10px 0px #000000",
 	marginBottom: "$3",
-	padding: "0 $5",
+	padding: "0 $8",
 
 	["& .title"]: {
 		letterSpacing: ".4rem",

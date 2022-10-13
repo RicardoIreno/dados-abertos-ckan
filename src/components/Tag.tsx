@@ -19,6 +19,6 @@ const TagCSS = css("span", {
 	padding: "$m $2",
 	margin: "$m",
 	borderRadius: "$2",
-	backgroundColor: "$theme",
-	boxShadow: "0 2px 5px 1px rgba(64, 60, 67, 0.16)",
+	backgroundColor: "$tag",
+	boxShadow: "0 2px 0 1px rgba(0,0,0,0.08)",
 })

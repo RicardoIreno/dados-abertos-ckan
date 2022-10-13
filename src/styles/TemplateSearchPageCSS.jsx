@@ -1,26 +1,25 @@
-import { css } from "./stitches.config";
+import { css } from "./stitches.config"
 
-export const TemplateSearchPageCSS = css('div', {
-  width: '100%',
+export const TemplateSearchPageCSS = css("div", {
+	width: "100%",
 
-  [`& .grid`]: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    // gridTemplateColumns: '300px 1fr 1fr',
-    // gridTemplateAreas: "left right right",  
-  },
-  
-  [`& .left`]: {
-    width: '300px',
-    marginRight: '$4'
-  
-  },
+	[`& .grid`]: {
+		width: "100%",
+		display: "flex",
+		flexDirection: "row",
+		paddingInline: "$1",
+		// gridTemplateColumns: '300px 1fr 1fr',
+		// gridTemplateAreas: "left right right",
+	},
 
-  [`& .right`]: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-  },
+	[`& .left`]: {
+		width: "300px",
+		marginRight: "$4",
+	},
 
+	[`& .right`]: {
+		display: "flex",
+		flexDirection: "column",
+		width: "100%",
+	},
 })
