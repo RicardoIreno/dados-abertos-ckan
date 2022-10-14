@@ -11,9 +11,9 @@
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /><img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" /><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
 </div>
 
-CKAN is an open-source DMS (data management system) for powering data hubs and data portals. CKAN makes it easy to publish, share and use data. It powers hundreds of data portals worldwide. Unfortunately, customize CKAN appearance can bit a bit hard. This project aims to provide a alternative frontend for simple visitors of your CKAN service. 
+[Ckan](https://ckan.org/) is an open-source DMS (data management system) for powering data hubs and data portals. CKAN makes it easy to publish, share and use data. It powers hundreds of data portals worldwide. Unfortunately, customize CKAN appearance can bit a bit hard. This project aims to provide a alternative frontend for simple visitors of your CKAN service. 
 
-[know more about CKAN](https://ckan.org/)
+
 
 ![Gif of the page](/public/page.gif)
 
@@ -31,7 +31,7 @@ In stand by
 [![Behance Badge](https://img.shields.io/badge/-Behance-blue?style=flat-square&logo=Behance&logoColor=white&link=https://www.behance.net/ricardoireno)](https://www.behance.net/ricardoireno)
 [![E-Mail](https://img.shields.io/badge/Microsoft_Outlook-0078D4?style=flat-square&logo=microsoft-outlook&logoColor=white)](mailto:ricardoireno@outlook.com)  
 
-Ricardo Ireno  
+
 
 
 Project Link: [https://github.com/RicardoIreno/dados-abertos-ckan](https://github.com/RicardoIreno/dados-abertos-ckan)
