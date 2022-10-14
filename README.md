@@ -1,7 +1,7 @@
 <div id="top"></div>
 
 <p align="center"><a href="https://github.com/RicardoIreno/dados-abertos-ckan">
-  <img src="public/logo_da_vertical.png" alt="Logo" width="447" height="220">
+  <img src="public/logo.svg" alt="Logo" width="600" height="400">
  </a></p>
 
 <h1 align="center">Dados Abertos - Ckan</h1>
@@ -14,6 +14,8 @@
 CKAN is an open-source DMS (data management system) for powering data hubs and data portals. CKAN makes it easy to publish, share and use data. It powers hundreds of data portals worldwide. Unfortunately, customize CKAN appearance can bit a bit hard. This project aims to provide a alternative frontend for simple visitors of your CKAN service. 
 
 [know more about CKAN](https://ckan.org/)
+
+![Gif of the page](/public/page.gif)
 
 #### Status of this project
 In stand by
